@@ -11,7 +11,7 @@ class Lists_Model extends Model {
    * @return array Liste aus ga mit id
    */
    public function all() {
-      return $this->_db->select('SELECT * FROM ga ORDER BY id DESC');
+      return $this->_db->select('SELECT * FROM ga ORDER BY id DESC LIMIT 0, 20');
    }
 
 }
