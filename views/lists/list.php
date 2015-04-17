@@ -4,7 +4,7 @@
 
    <?php
       if (!sizeof($data['lists'])) {
-         echo '<div class="alert alert-info">Derzeit gibt es keine Liste. <a href="' . DIR . 'products/add">Leg gleich welche an</a>!</div>';
+         echo '<div class="alert alert-info">Derzeit gibt es keine Liste.</div>';
       }
       else {
       echo '
