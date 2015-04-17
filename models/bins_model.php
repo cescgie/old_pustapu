@@ -11,6 +11,10 @@ class Bins_Model extends Model {
    * @return array Liste aus bin mit id
    */
    public function all() {
-      return $this->_db->select('SELECT * FROM bins ORDER BY id DESC LIMIT 0, 20');
+      return $this->_db->select('SELECT * FROM ga ORDER BY id DESC LIMIT 0, 20');
+   }
+
+   public function insert($datas) {
+     $this->_db->insert('ga', $datas);
    }
 }
