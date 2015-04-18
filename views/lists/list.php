@@ -2,6 +2,18 @@
 
    <?php echo Message::show(); ?>
 
+
+   <div class="btn-group btn-group-justified" role="group" aria-label="...">
+     <div class="btn-group" role="group">
+       <a type="button" href="<?= DIR?>bins/ga_analyze"  class="btn btn-default">GA</a>
+     </div>
+     <div class="btn-group" role="group">
+       <a type="button" href="#" class="btn btn-default">Middle</a>
+     </div>
+     <div class="btn-group" role="group">
+       <a type="button" href="#"  class="btn btn-default">Right</a>
+     </div>
+   </div>
    <?php
       if (!sizeof($data['lists'])) {
          echo '<div class="alert alert-info">Derzeit gibt es keine Liste.</div>';

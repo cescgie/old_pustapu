@@ -3,8 +3,13 @@
 <head>
    <meta charset="utf-8">
    <title><?= $data['title'] . ' - ' . SITETITLE ?></title>
-   <link rel="stylesheet" href="<?= URL::STYLES('bootstrap.min') ?>">
    <link rel="stylesheet" href="<?= URL::STYLES('style') ?>">
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+   <!-- Optional theme -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
 </head>
 <body>
 

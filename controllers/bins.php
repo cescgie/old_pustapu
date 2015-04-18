@@ -8,7 +8,7 @@ class Bins extends Controller {
 
    public function index() {
       $data['title'] = 'Übersicht';
-      $data['bins'] = $this->_model->all();
+      //$data['bins'] = $this->_model->all();
 
       $this->_view->render('header', $data);
       $this->_view->render('bins/list', $data);
@@ -24,7 +24,17 @@ class Bins extends Controller {
       $this->_view->render('footer');
    }
 
-   public function upload() {
+   public function ga_analyze(){
+      $data['title'] = 'analyze';
+      //$data['form_header'] = 'Neues Produkt anlegen';
+      $data['count'] = $this->_model->count();
+
+      $this->_view->render('header', $data);
+      $this->_view->render('bins/list', $data);
+      $this->_view->render('bins/ga_list', $data);
+      $this->_view->render('footer');
+   }
+   public function ga_upload() {
       if(!isset($_POST['upfile'])){   
          Message::set("Upload failed");
         }else{         
@@ -192,7 +202,7 @@ class Bins extends Controller {
                         //$datas['IpAddress'] = $tmpObject[16];
                         //echo $datas['AdServerFarmId'];
                         //echo $tmpObject[16];
-                        $this->_model->insert($datas);
+                        $this->_model->ga_insert($datas);
                      };
                /*if($insert === FALSE) {
                    //echo "Insert Error: " . $connect->error. "\n";
@@ -201,8 +211,8 @@ class Bins extends Controller {
                }*/
                   
                @fclose($handle);
-               //@chmod('data_ga/ga/20141119/00/'.$file, 0666);
-               //@rename('data_ga/ga/20141119/00/'.$file, 'data_ga/ga/20141119/00/'.$file.'.done');
+               @chmod('uploads/'.$file, 0666);
+               @rename('uploads/'.$file, 'uploads/'.$file.'.done');
             };
          };
          $debugTimeEnd = microtime(true); 
