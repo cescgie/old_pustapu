@@ -210,7 +210,7 @@ class Bins extends Controller {
          //echo "\n";
 
         }
-        header("Refresh:0; url='pustapu/'");
+        header("Refresh:0; url='/pustapu/bins'");
     }
 
 }
