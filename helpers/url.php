@@ -3,7 +3,11 @@
 class URL {
 
    public static function redirect($url = null, $status) {
-      header('Location: ' . DIR . $url, true, $status);
+      if (!isset(self::$messages[$status])) {
+         $status = 303;
+      }
+      header(self::$messages[$status], true, $status);
+      header('Location: ' . DIR . $url);
       exit;
    }
 
