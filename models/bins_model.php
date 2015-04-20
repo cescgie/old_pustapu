@@ -35,5 +35,11 @@ class Bins_Model extends Model {
       else
          return null;
    }
+   public function file_bin($id){
+      if (is_int($id))
+         return $this->_db->select("SELECT filetitle,filedir FROM bin WHERE id = $id");
+      else
+         return null;
+   }
 
 }

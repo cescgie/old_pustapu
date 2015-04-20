@@ -57,7 +57,25 @@
                   echo
                      '<tr>
                         <td>'.$bin['filetitle'].'</td>
-                        <td></td>
+                        <td><!-- Single button -->
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                Action <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" role="menu">';
+                              if (substr($bin['filetitle'], -7) == '.bin.gz'){
+                              echo
+                                '<li><a href="'.DIR .'bins/tar_convert/'.$bin['id'].'">Convert</a></li>';
+                              }
+                              if (substr($bin['filetitle'], -4) == '.bin'){
+                              echo 
+                                '<li><a href="#">Parse</a></li>';
+                              }
+                              echo
+                                '<li><a href="#">Delete</a></li>
+                              </ul>
+                            </div>
+                        </td>
                      </tr>';
          }
                   echo 

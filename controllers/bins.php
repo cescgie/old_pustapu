@@ -34,6 +34,7 @@ class Bins extends Controller {
       $this->_view->render('footer');
    }
 
+
    public function ga_analyze(){
       $data['title'] = 'analyze';
       //$data['form_header'] = 'Neues Produkt anlegen';
@@ -43,6 +44,36 @@ class Bins extends Controller {
       $this->_view->render('bins/list', $data);
       $this->_view->render('bins/ga_list', $data);
       $this->_view->render('footer');
+   }
+   public function tar_convert($id){
+      $id = (int)$id;
+      $data['title'] = 'Convert';
+      if ($id > 0){
+         $data['bin'] = $this->_model->file_bin($id);
+         //echo $data['bin'];
+         foreach ($data['bin'] as $fbin){
+          //echo $fbin['filetitle'];
+            //This input should be from somewhere else, hard-coded in this example
+               $file_name = $fbin['filedir'].$fbin['filetitle'];
+               //echo $file_name;
+               // Raising this value may increase performance
+               $buffer_size = 4096; // read 4kb at a time
+               $out_file_name = str_replace('.gz', '', $file_name); 
+               // Open our files (in binary mode)
+               $file = gzopen($file_name, 'rb');
+               $out_file = fopen($out_file_name, 'wb'); 
+               // Keep repeating until the end of the input file
+               while(!gzeof($file)) {
+               // Read buffer-size bytes
+               // Both fwrite and gzread and binary-safe
+                 fwrite($out_file, gzread($file, $buffer_size));
+               }  
+               // Files are done, close files
+               fclose($out_file);
+               gzclose($file);
+         }
+      }
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
    }
 
    public function upload($fid) {
