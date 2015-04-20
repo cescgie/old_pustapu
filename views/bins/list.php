@@ -43,9 +43,10 @@
    
    <?php
       if (!sizeof($data['bin'])) {
-         echo '<div class="alert alert-info">Derzeit gibt es keine Bin-Datei.</div>';
+         echo '<div class="alert alert-info">No Bin-file avalaible.</div>';
       }
       else {
+        //echo $folder['id'];
          echo 
             '<div class="panel panel-default">
               <!-- Default panel contents -->
@@ -106,7 +107,32 @@
          }
                   echo 
                      '</tbody>
-                </table>
+                     <tfoot>
+                          <tr>
+                            <td colspan="6">
+                              <a href="#" data-toggle="modal" class="btn btn-warning btn-sm" data-target=".pop-up-d'.$folder['id'].'" >Delete all files</a></li>
+                               <!--  Modal content for the delete image  -->
+                              <div class="modal fade pop-up-d'.$folder['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
+                                  <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+
+                                            <!--<div class="modal-header">
+                                               <h4 class="modal-title" id="myLargeModalLabel-1">......</h4>
+                                            </div>-->
+                                            <div class="modal-body">
+                                               <p style="color:black;">Are you sure that you want to permanently delete all files?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</a>
+                                                <a class="btn btn-primary" href="' . DIR . 'bins/delete_all/'.$folder['id'].'" >Ok</a>          
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                  </div><!-- /.modal-dialog -->
+                              </div><!-- /.modal image -->
+                            </td>
+                          </tr>
+                        </tfoot>
+                  </table>
             </div>';
       }
    ?>

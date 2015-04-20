@@ -169,6 +169,27 @@ class Bins extends Controller {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
        //$this->index();
    }
+
+   public function delete_all($id) {
+        $id = (int)$id;
+        //echo $id;
+        if ($id > 0) 
+        {
+          $data['bin'] = $this->_model->file_name2($id);
+          if ($data['bin'] != null) {
+             foreach ($data['bin'] as $bin) {
+                  $filename=$bin['filedir'].$bin['filetitle'];
+                  unlink($filename);
+                  $this->_model->delete_sel($id);                 
+                  Message::set("File(s) deleted");
+               }               
+           }else{
+               Message::set("File not found!");
+           }
+        }
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+       //$this->index();
+   }
    public function ga_upload($fid) {
       if(!isset($_POST['upfile'])){   
          Message::set("Upload failed");

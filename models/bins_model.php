@@ -30,16 +30,24 @@ class Bins_Model extends Model {
          return null;
    }
 
-   /*public function single2($id) {
+   public function single2($id) {
       #check
       if (is_int($id))
          return $this->_db->selectsingle("SELECT * FROM bin WHERE infolderid = $id");
       else
          return null;
-   }*/
+   }
+
    public function file_name($id){
       if (is_int($id))
          return $this->_db->select("SELECT filedir,filetitle FROM bin WHERE id = $id");
+      else
+         return null;
+   }
+
+   public function file_name2($id){
+      if (is_int($id))
+         return $this->_db->select("SELECT filedir,filetitle,filesize FROM bin WHERE infolderid = $id");
       else
          return null;
    }
@@ -53,6 +61,13 @@ class Bins_Model extends Model {
       #check
       if (is_int($id))
          return $this->_db->delete('bin', 'id ='.$id);
+      else
+         return null;
+   }
+   public function delete_sel($id) {
+      #check
+      if (is_int($id))
+         return $this->_db->delete('bin', 'infolderid ='.$id);
       else
          return null;
    }

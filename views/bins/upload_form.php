@@ -10,11 +10,11 @@
    ?>
    <?php 
 	echo 
-		'<a href="#" data-toggle="modal" class="btn btn-primary" data-target=".pop-up-'.$data['fid'].'">
+		'<a href="#" data-toggle="modal" class="btn btn-primary" data-target=".pop-up-s'.$data['fid'].'">
                            Upload File
                               </a>
                             <!--  Modal content for the image -->
-                            <div class="modal fade pop-up-'.$data['fid'].'" id="rating-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
+                            <div class="modal fade pop-up-s'.$data['fid'].'" id="rating-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
                               <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                   <div class="modal-header">
