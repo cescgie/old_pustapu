@@ -90,9 +90,9 @@ class Bins extends Controller {
     //header('Location: ' . $_SERVER['HTTP_REFERER']);
    }
 
-   public function upload($fid) {
+   /*public function upload($fid) {
        $id = (int)$fid;
-       //echo $id;
+       echo $id;
         if ($id > 0) 
         {
          if (!empty($_FILES)) {
@@ -114,7 +114,31 @@ class Bins extends Controller {
          //$this->index();
         //Message::show();
         //header("Refresh:0; url='../../gallery'");
-         header('Location: ' . $_SERVER['HTTP_REFERER']);
+         //header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }*/
+
+    public function uploads($fid) {
+       $id = (int)$fid;
+        if ($id > 0) 
+        {
+         if (!empty($_FILES)) {
+            $tempFile = $_FILES['file']['tmp_name'];
+            $data['infolderid'] = $id;
+            $data['filetitle'] =$_FILES['file']['name'];
+            $data['filedir'] = getcwd()."/uploads/";
+            $data['filesize'] = $_FILES["file"]["size"];
+            $targetFile = $data['filedir']. $data['filetitle'];
+            move_uploaded_file($tempFile, $targetFile);
+            $this->_model->insert($data);
+            $data['title'] = "Upload";
+               Message::set("Upload succesfull");
+            } else{
+               Message::set("Upload failed. Please select a file to upload");
+            }
+         }
+         //$this->index();
+        //Message::show();
+        //header("Refresh:0; url='../../gallery'");
     }
 
     public function delete($id) {

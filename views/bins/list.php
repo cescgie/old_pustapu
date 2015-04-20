@@ -8,8 +8,14 @@
   
    echo '<ol class="breadcrumb">
       <li><a href="'.DIR .'folder/">Folder</a></li>';
+      foreach ($data['fname3'] as $fold2) {
+        echo  '<li><a href="'.DIR .'folder/depth1/'.$fold2['id'].'">Year ('.$fold2['name'].')</a></li>';
+      }
+      foreach ($data['fname2'] as $fold1) {
+        echo  '<li><a href="'.DIR .'folder/depth2/'.$fold1['id'].'">Month ('.$fold1['name'].')</a></li>';
+      }
       foreach ($data['fname1'] as $fold) {
-        echo  '<li><a href="'.DIR .'folder/selectFolder/'.$fold['id'].'">Date ('.$fold['name'].')</a></li>';
+        echo  '<li><a href="'.DIR .'folder/depth3/'.$fold['id'].'">Date ('.$fold['name'].')</a></li>';
       }
       foreach ($data['fname'] as $folder) {
         echo '<li class="active">Hour ('.$folder['name'].')</li>';

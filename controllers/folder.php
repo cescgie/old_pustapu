@@ -16,7 +16,7 @@ class Folder extends Controller {
       	//view
       	$this->_view->render('header', $data);
 	  	$this->_view->render('folder/folder_form');
-	  	$this->_view->render('folder/list',$data); 
+	  	$this->_view->render('folder/list_depth0',$data); 
 	  	$this->_view->render('footer');
 		
 	}
@@ -40,11 +40,12 @@ class Folder extends Controller {
    
 	}
 
-   public function selectFolder($id){
+   public function depth1($id){
    		 $data['title'] = "Folder";
    	 	 $id = (int)$id;
 	     if ($id > 0) 
 	     {
+	     	 //echo $id;
 	     	 $fid = $id; 	 
 	     	 //$data['files'] = $this->_model->selectSingle($id);
 	     	 $data['depth'] = 1;
@@ -52,13 +53,79 @@ class Folder extends Controller {
 	     	 $this->_view->render('header', $data);
 	     	 $this->_view->render('folder/folder_form',$data);
 	     	 $data['fname'] = $this->_model->folder_name($fid);
+	     	 foreach ($data['fname'] as $folder) {
+	     	 	$fid1 = $folder['infolder'];   	 	
+	     	 }
+	     	 $data['fname1'] = $this->_model->folder_name1($fid1);
+	     	 //echo $fid1;
+	     	 foreach ($data['fname1'] as $folds) {
+	     	 	$fid2 = $folds['infolder'];   	 	
+	     	 }
+	     	 //$data['fname2'] = $this->_model->folder_name1($fid2);
 	     	 $data['folder'] = $this->_model->selectSingle($fid);	     	 
-	     	 $this->_view->render('folder/unter_list',$data); 
+	     	 $this->_view->render('folder/list_depth1',$data); 
+	  		 $this->_view->render('footer');
+	     }
+   }
+    public function depth2($id){
+   		 $data['title'] = "Folder";
+   	 	 $id = (int)$id;
+	     if ($id > 0) 
+	     {
+	     	//echo $id;
+	     	 $fid = $id; 	 
+	     	 //$data['files'] = $this->_model->selectSingle($id);
+	     	 $data['depth'] = 2;
+	     	 $data['fid'] = $fid;
+	     	 $this->_view->render('header', $data);
+	     	 $this->_view->render('folder/folder_form',$data);
+	     	 $data['fname'] = $this->_model->folder_name($fid);
+	     	 foreach ($data['fname'] as $folder) {
+	     	 	$fid1 = $folder['infolder'];   	 	
+	     	 }
+	     	 //echo $fid1;
+	     	 $data['fname1'] = $this->_model->folder_name1($fid1);
+	     	 foreach ($data['fname1'] as $folde) {
+	     	 	$fid2 = $folde['infolder'];   	 	
+	     	 }
+	     	 //echo $fid2;
+	         $data['fname2'] = $this->_model->folder_name1($fid2);
+	     	 $data['folder'] = $this->_model->selectSingle($fid);	     	 
+	     	 $this->_view->render('folder/list_depth2',$data); 
+	  		 $this->_view->render('footer');
+	     }
+   }
+    public function depth3($id){
+   		 $data['title'] = "Folder";
+   	 	 $id = (int)$id;
+	     if ($id > 0) 
+	     {
+	     	 $fid = $id; 	 
+	     	 //$data['files'] = $this->_model->selectSingle($id);
+	     	 $data['depth'] = 3;
+	     	 $data['fid'] = $fid;
+	     	 $this->_view->render('header', $data);
+	     	 $this->_view->render('folder/folder_form',$data);
+	     	 $data['fname'] = $this->_model->folder_name($fid);
+	     	 foreach ($data['fname'] as $folder) {
+	     	 	$fid1 = $folder['infolder'];   	 	
+	     	 }
+	     	 $data['fname1'] = $this->_model->folder_name1($fid1);
+	     	 foreach ($data['fname1'] as $folder) {
+	     	 	$fid2 = $folder['infolder'];   	 	
+	     	 }
+	     	 $data['fname2'] = $this->_model->folder_name1($fid2);
+	     	 foreach ($data['fname2'] as $folder) {
+	     	 	$fid3 = $folder['infolder'];   	 	
+	     	 }
+	     	 $data['fname3'] = $this->_model->folder_name1($fid3);
+	     	 $data['folder'] = $this->_model->selectSingle($fid);	     	 
+	     	 $this->_view->render('folder/list_depth3',$data); 
 	  		 $this->_view->render('footer');
 	     }
    }
 
-   public function selectFolder2($id){
+   public function depth4($id){
    		 $data['title'] = "Folder";
    	 	 $id = (int)$id;
 	     if ($id > 0) 
@@ -72,6 +139,18 @@ class Folder extends Controller {
 	     	 	$fid1 = $folder['infolder'];   	 	
 	     	 }
 	     	 $data['fname1'] = $this->_model->folder_name1($fid1);
+	     	 foreach ($data['fname1'] as $folder) {
+	     	 	$fid2 = $folder['infolder'];   	 	
+	     	 }
+	     	 $data['fname2'] = $this->_model->folder_name1($fid2);
+	     	 foreach ($data['fname2'] as $folder) {
+	     	 	$fid3 = $folder['infolder'];   	 	
+	     	 }
+	     	 $data['fname3'] = $this->_model->folder_name1($fid3);
+	     	 foreach ($data['fname3'] as $folder) {
+	     	 	$fid4 = $folder['infolder'];   	 	
+	     	 }
+	     	 $data['fname4'] = $this->_model->folder_name1($fid4);
 	     	 $data['bin'] = $this->_model->selectBins($fid);
 	     	 $this->_view->render('bins/list',$data); 
 	  		 $this->_view->render('footer');

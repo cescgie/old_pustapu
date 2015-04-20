@@ -54,4 +54,17 @@ class URL {
       }
       return DIR . $path;
    }
+   public static function DROPZONEJS($filename = false, $path = 'static/dropzone/') {
+      if ($filename) {
+         $path .= "$filename.js";
+      }
+      return DIR . $path;
+   }
+
+   public static function DROPZONECSS($filename = false, $path = 'static/dropzone/css/') {
+      if ($filename) {
+         $path .= "$filename.css";
+      }
+      return DIR . $path;
+   }
 }

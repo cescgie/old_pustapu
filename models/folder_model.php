@@ -53,7 +53,7 @@ class Folder_Model extends Model {
          return null;
    }
    public function folder_name1($fid1){
-         return $this->_db->select("SELECT id,name FROM folder WHERE id = $fid1");
+         return $this->_db->select("SELECT id,name,infolder FROM folder WHERE id = $fid1");
    }
    public function selectSingle($fid){
       if (is_int($fid))
