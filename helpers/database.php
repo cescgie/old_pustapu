@@ -23,6 +23,40 @@ class Database extends PDO {
 		$stmt->execute();
 		return $stmt->fetchAll($fetchMode);
 	}
+	public function selectsingle($sql,$array = array(), $fetchMode = PDO::FETCH_ASSOC) {
+
+		$stmt = $this->prepare($sql);
+		foreach($array as $key => $value) {
+			$stmt->bindValue("$key", $value);
+		}
+
+		$stmt->execute();
+		return $stmt->fetch($fetchMode);
+	}
+	
+	public function select2($table, $where, $array = array(), $fetchMode = PDO::FETCH_ASSOC) {
+		ksort($where);
+		
+		$fieldDetails = NULL;
+		$i = 0;
+		foreach($where as $key => $value) {
+			if ($i == 0) {
+				$fieldDetails .= "$key = :$key";
+			}
+			else {
+				$fieldDetails .= " AND $key = :$key";
+			}
+			$i++;
+		}
+		//$fieldDetails = rtrim($fieldDetails, ',');
+		$stmt = $this->prepare("SELECT * FROM $table WHERE $fieldDetails");
+		foreach($where as $key => $value) {
+			$stmt->bindValue(":$key", $value);
+		}
+		//echo $stmt->queryString;
+		$stmt->execute();
+		return $stmt->fetch($fetchMode);
+	}
 
 	public function insert($table, $data) {
 

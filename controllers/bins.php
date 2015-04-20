@@ -8,7 +8,8 @@ class Bins extends Controller {
 
    public function index() {
       $data['title'] = 'Übersicht';
-      //$data['bins'] = $this->_model->all();
+      $data['bins'] = $this->_model->all();
+      echo $data['fid'];
 
       $this->_view->render('header', $data);
       $this->_view->render('bins/list', $data);
@@ -24,6 +25,15 @@ class Bins extends Controller {
       $this->_view->render('footer');
    }
 
+   public function bin_folder(){
+      $data['title'] = 'File bin';
+
+      $this->_view->render('header', $data);
+      $this->_view->render('bins/list', $data);
+      $this->_view->render('bins/folder', $data);
+      $this->_view->render('footer');
+   }
+
    public function ga_analyze(){
       $data['title'] = 'analyze';
       //$data['form_header'] = 'Neues Produkt anlegen';
@@ -34,13 +44,43 @@ class Bins extends Controller {
       $this->_view->render('bins/ga_list', $data);
       $this->_view->render('footer');
    }
-   public function ga_upload() {
+
+   public function upload($fid) {
+       $id = (int)$fid;
+       //echo $id;
+        if ($id > 0) 
+        {
+         if (!empty($_FILES)) {
+            $tempFile = $_FILES['uploaded']['tmp_name'];
+            $data['infolderid'] = $id;
+            $data['filetitle'] = $_FILES['uploaded']['name'];
+            $data['filedir'] = getcwd()."/uploads/";
+            $data['filesize'] = $_FILES["uploaded"]["size"];
+            $targetFile = $data['filedir']. $data['filetitle'];
+            move_uploaded_file($tempFile, $targetFile);
+            $this->_model->insert($data);
+            //header("Refresh:0; url='../../gallery'");
+            $data['title'] = "Upload";
+               Message::set("Upload succesfull");
+            } else{
+               Message::set("Upload failed. Please select a file to upload");
+            }
+         }
+         //$this->index();
+        //Message::show();
+        //header("Refresh:0; url='../../gallery'");
+         header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+   public function ga_upload($fid) {
       if(!isset($_POST['upfile'])){   
          Message::set("Upload failed");
-        }else{         
+        }else{ 
+            echo $fid;        
             move_uploaded_file($_FILES["uploaded"]["tmp_name"],'uploads/'.$_FILES['uploaded']['name']);
             //Message::set("Upload succesfull");
-            ini_set('max_execution_time', 68000); 
+            //$filename = $_FILES['uploaded']['name'];
+            
+            /*ini_set('max_execution_time', 68000); 
             @set_time_limit(68000);
 
             $debugTimeStart = microtime(true);  
@@ -102,9 +142,9 @@ class Bins extends Controller {
             $code = $codeGA;
             //$code = $codeBPC;
             
-            /*
-               sizes of datatypes   
-            */ 
+            
+            //   sizes of datatypes   
+             
             foreach($dataTypesSize AS $k=>$v) {
                $dataTypesSize[$k]['size'] = strlen(pack($dataTypesSize[$k]['code'], '')); 
                
@@ -117,9 +157,9 @@ class Bins extends Controller {
                $rowPointer += $code[$k]['size'];         
             };
    
-            /*
-               size/length row
-            */
+            
+            //   size/length row
+            
             $rowLength = count($code);
             $rowSize = 0;
             foreach($code AS $k=>$v) {
@@ -127,9 +167,9 @@ class Bins extends Controller {
             };
             
             
-            /*
-               errorcode
-            */
+            
+              // errorcode
+            
             $errorcode = array('-2', '-3', '-4', '-6', '-7', '-10', '-23', '-26', '-98');
             $handlefolder = opendir ('uploads/');
                while ($file = readdir ($handlefolder)) {    
@@ -199,16 +239,12 @@ class Bins extends Controller {
                         $datas['IspId'] =$tmpObject[36];
                         $datas['CountTypeId'] =$tmpObject[37];
                         $datas['ConnectionTypeId'] =$tmpObject[38];
+                        $datas['filename'] = $filename;
                         //$datas['IpAddress'] = $tmpObject[16];
                         //echo $datas['AdServerFarmId'];
                         //echo $tmpObject[16];
                         $this->_model->ga_insert($datas);
                      };
-               /*if($insert === FALSE) {
-                   //echo "Insert Error: " . $connect->error. "\n";
-               }else{         
-                   echo "Document inserted successfully. \n";
-               }*/
                   
                @fclose($handle);
                @chmod('uploads/'.$file, 0666);
@@ -218,9 +254,9 @@ class Bins extends Controller {
          $debugTimeEnd = microtime(true); 
          //echo "\n\n".'runtime: '.($debugTimeEnd-$debugTimeStart).' s';
          //echo "\n";
-
+         */
         }
-        header("Refresh:0; url='/pustapu/bins'");
+        //header("Refresh:0; url='/pustapu/bins'");
     }
 
 }

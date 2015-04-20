@@ -11,7 +11,7 @@ class Folder_Model extends Model {
    * @return array Liste aus Produkten mit id, timestamp, name, url, image und price
    */
    public function all() {
-      return $this->_db->select('SELECT * FROM folder ORDER BY id DESC LIMIT 0, 20');
+      return $this->_db->select('SELECT * FROM folder WHERE depth=0 ORDER BY id DESC LIMIT 0, 20');
    }
 
    public function insert($data) {
@@ -30,22 +30,40 @@ class Folder_Model extends Model {
          return null;
    }
 
-   public function single($id) {
+   public function single($fid1) {
+      #check
+      if (is_int($fid1))
+         return $this->_db->selectsingle("SELECT * FROM folder WHERE id = $fid1");
+      else
+         return null;
+   }
+
+    public function single2($id) {
       #check
       if (is_int($id))
-         return $this->_db->selectsingle("SELECT * FROM folder WHERE id = $id");
+         return $this->_db->selectsingle("SELECT * FROM folder WHERE infolder = $id AND depth=1");
       else
          return null;
    }
-   public function folder_name($id){
-      if (is_int($id))
-         return $this->_db->select("SELECT id,name FROM folder WHERE id = $id");
+
+   public function folder_name($fid){
+      if (is_int($fid))
+         return $this->_db->select("SELECT id,name,infolder FROM folder WHERE id = $fid");
       else
          return null;
    }
-   public function selectSingle($id){
-      if (is_int($id))
-         return $this->_db->select("SELECT * FROM files WHERE infolder_id = $id ORDER BY created_at DESC");
+   public function folder_name1($fid1){
+         return $this->_db->select("SELECT id,name FROM folder WHERE id = $fid1");
+   }
+   public function selectSingle($fid){
+      if (is_int($fid))
+         return $this->_db->select("SELECT * FROM folder WHERE infolder = $fid ORDER BY created_at DESC");
+      else
+         return null;
+   }
+   public function selectBins($fid){
+      if (is_int($fid))
+         return $this->_db->select("SELECT * FROM bin WHERE infolderid = $fid ORDER BY created_at DESC");
       else
          return null;
    }

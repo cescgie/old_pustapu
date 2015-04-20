@@ -31,10 +31,13 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
-CREATE TABLE `binss` (
+CREATE TABLE `bin` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `name` varchar(256) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `filetitle` varchar(100) NOT NULL,
+  `filedir` varchar(100) NOT NULL,
+  `filesize` bigint(100) DEFAULT NULL,
+  `infolderid` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
@@ -66,7 +69,7 @@ CREATE TABLE `binss` (
 		  `MediaTypeId` tinyint(4) NOT NULL,
 		  `PlcContentTypeId` tinyint(4) NOT NULL,
 		  `Reserved2` smallint(4) NOT NULL,
-		  `DateEntered` int(11) NOT NULL,	
+		  `DateEntered` int(11) NOT NULL,
 		  `Hour` tinyint(4) NOT NULL,
 		  `Minute` tinyint(4) NOT NULL,	
 		  `Second` tinyint(4) NOT NULL, 
@@ -79,5 +82,16 @@ CREATE TABLE `binss` (
 		  `IspId` smallint(4) NOT NULL,
 		  `CountTypeId` tinyint(4) NOT NULL,
 		  `ConnectionTypeId` tinyint(4) NOT NULL,
+		  `filename` varchar(50) NOT NULL,
 		  PRIMARY KEY  (`id`)
 		) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
+
+CREATE TABLE IF NOT EXISTS `folder` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `edited_at` datetime NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `infolder` int(11) NOT NULL,
+  `depth` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

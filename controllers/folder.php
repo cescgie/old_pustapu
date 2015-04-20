@@ -16,8 +16,8 @@ class Folder extends Controller {
       	//view
       	$this->_view->render('header', $data);
 	  	$this->_view->render('folder/folder_form');
-	  	$this->_view->render('folder/folder_list',$data); 
-	  	$this->_view->render('footer_main');
+	  	$this->_view->render('folder/list',$data); 
+	  	$this->_view->render('footer');
 		
 	}
 
@@ -29,10 +29,12 @@ class Folder extends Controller {
 
 	   		if(isset($_POST["folder_name"])){
 	   			$data['name'] = $_POST["folder_name"];
-	   			Message::set("Ordner '".$data['name']."' erstellt");
+	   			$data['depth'] = $_POST["depth"];
+	   			$data['infolder'] = $_POST["infolder"];
+	   			Message::set("Folder '".$data['name']."' created");
 	   			$this->_model->insert($data);
 	   		}else{
-	   			Message::set("Keine Information added");
+	   			Message::set("No information added");
 	   		}
 	     header('Location: ' . $_SERVER['HTTP_REFERER']);
    
@@ -44,13 +46,36 @@ class Folder extends Controller {
 	     if ($id > 0) 
 	     {
 	     	 $fid = $id;
-	     	 $data['folder'] = $this->_model->folder_name($fid);
-	     	 $data['files'] = $this->_model->selectSingle($id);
-
+	     	 
+	     	 //$data['files'] = $this->_model->selectSingle($id);
+	     	 $data['depth'] = 1;
+	     	 $data['fid'] = $fid;
 	     	 $this->_view->render('header', $data);
-	     	 $this->_view->render('bin/upload_form', $data);
-	     	 $this->_view->render('bin/list',$data); 
-	  		 $this->_view->render('footer_main');
+	     	 $this->_view->render('folder/folder_form',$data);
+	     	 $data['fname'] = $this->_model->folder_name($fid);
+	     	 $data['folder'] = $this->_model->selectSingle($fid);	     	 
+	     	 $this->_view->render('folder/unter_list',$data); 
+	  		 $this->_view->render('footer');
+	     }
+   }
+
+   public function selectFolder2($id){
+   		 $data['title'] = "Folder";
+   	 	 $id = (int)$id;
+	     if ($id > 0) 
+	     {
+	     	 $fid = $id;
+	     	 $data['fid']=$fid;
+	     	 $this->_view->render('header', $data);
+	     	 $this->_view->render('bins/upload_form', $data);	         
+	     	 $data['fname'] = $this->_model->folder_name($fid);
+	     	 foreach ($data['fname'] as $folder) {
+	     	 	$fid1 = $folder['infolder'];   	 	
+	     	 }
+	     	 $data['fname1'] = $this->_model->folder_name1($fid1);
+	     	 $data['bin'] = $this->_model->selectBins($fid);
+	     	 $this->_view->render('bins/list',$data); 
+	  		 $this->_view->render('footer');
 	     }
    }
    public function delete($id) {

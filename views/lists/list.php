@@ -5,14 +5,14 @@
 
    <div class="btn-group btn-group-justified" role="group" aria-label="...">
      <div class="btn-group" role="group">
-       <a type="button" href="<?= DIR?>bins/ga_analyze"  class="btn btn-default">GA</a>
+       <a type="button" href="<?= DIR?>folder/lists"  class="btn btn-default">Bin File</a>
      </div>
      <div class="btn-group" role="group">
-       <a type="button" href="#" class="btn btn-default">Middle</a>
+       <a type="button" href="#" class="btn btn-default">Analize</a>
      </div>
-     <div class="btn-group" role="group">
+     <!--<div class="btn-group" role="group">
        <a type="button" href="#"  class="btn btn-default">Right</a>
-     </div>
+     </div>-->
    </div>
    <?php
       if (!sizeof($data['lists'])) {
