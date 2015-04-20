@@ -45,8 +45,7 @@ class Folder extends Controller {
    	 	 $id = (int)$id;
 	     if ($id > 0) 
 	     {
-	     	 $fid = $id;
-	     	 
+	     	 $fid = $id; 	 
 	     	 //$data['files'] = $this->_model->selectSingle($id);
 	     	 $data['depth'] = 1;
 	     	 $data['fid'] = $fid;

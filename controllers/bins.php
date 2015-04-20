@@ -45,6 +45,7 @@ class Bins extends Controller {
       $this->_view->render('bins/ga_list', $data);
       $this->_view->render('footer');
    }
+
    public function tar_convert($id){
       $id = (int)$id;
       $data['title'] = 'Convert';
@@ -57,7 +58,7 @@ class Bins extends Controller {
                $file_name = $fbin['filedir'].$fbin['filetitle'];
                //echo $file_name;
                // Raising this value may increase performance
-               $buffer_size = 4096; // read 4kb at a time
+               /*$buffer_size = 4096; // read 4kb at a time
                $out_file_name = str_replace('.gz', '', $file_name); 
                // Open our files (in binary mode)
                $file = gzopen($file_name, 'rb');
@@ -68,12 +69,25 @@ class Bins extends Controller {
                // Both fwrite and gzread and binary-safe
                  fwrite($out_file, gzread($file, $buffer_size));
                }  
+               //echo $file."\n";
+               //echo $out_file."\n";
                // Files are done, close files
                fclose($out_file);
                gzclose($file);
+               echo $out_file;*/
+               
          }
+         //$out_file_name = str_replace('.gz', '', $file_name);
+         $data['filetitle'] = str_replace('.gz', '', $fbin['filetitle']);
+         //echo $data['filetitle']."\n";
+         $data['id'] = $id;
+         //echo $data['$id']."\n";
+         //@chmod($file_name, 0666);
+         //@rename($file_name, 'data_ga/ga/20141119/00/'.$file.'.done');
+         $this->_model->update($data);        
+         //Message::set("Datei $files".$files['filetitle']." enfernt"); 
       }
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    //header('Location: ' . $_SERVER['HTTP_REFERER']);
    }
 
    public function upload($fid) {
@@ -102,6 +116,35 @@ class Bins extends Controller {
         //header("Refresh:0; url='../../gallery'");
          header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
+
+    public function delete($id) {
+        $id = (int)$id;
+        //echo $id;
+        if ($id > 0) 
+        {
+          $data['bin'] = $this->_model->single($id);
+          //echo $data['bin'];
+          if ($data['bin'] != null) {
+            //echo 
+            //echo "test";
+             $file_name = $this->_model->file_bin($id);
+             //echo $file_name;
+             foreach ($file_name as &$bin) {
+                  //echo $bin['filetitle'];
+                  //echo $bin['filedir'].$bin['filetitle'];
+                  $filename=$bin['filedir'].$bin['filetitle'];
+                  unlink($filename);
+                  $this->_model->delete($id);
+                 
+                 Message::set("File ".$bin['filetitle']." deleted");
+               }
+           }else{
+               Message::set("File not found!");
+           }
+        }
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+       //$this->index();
+   }
    public function ga_upload($fid) {
       if(!isset($_POST['upfile'])){   
          Message::set("Upload failed");

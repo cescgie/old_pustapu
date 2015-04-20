@@ -34,4 +34,24 @@ class URL {
       }
       return DIR . $path;
    }
+   public static function FONTS($filename = false,$filetype, $path = 'static/font-awesome/') {
+      if ($filename) {
+         $path .= "$filename.$filetype";
+      }
+      return DIR . $path;
+   }
+
+   public static function SCRIPTS($filename = false, $path = 'static/js/') {
+      if ($filename) {
+         $path .= "$filename.js";
+      }
+      return DIR . $path;
+   }
+
+   public static function IMAGES($filename = false, $filetype, $path = 'static/img/') {
+      if ($filename) {
+         $path .= "$filename.$filetype";
+      }
+      return DIR . $path;
+   }
 }

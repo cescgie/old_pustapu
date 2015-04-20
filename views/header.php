@@ -6,12 +6,16 @@
    <link rel="stylesheet" href="<?= URL::STYLES('style') ?>">
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+   <!--<link rel="stylesheet" href="<?= URL::STYLES('bootstrap.min') ?>">-->
 
    <!-- Optional theme -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+   <link rel="stylesheet" href="<?= URL::STYLES('bootstrap-theme.min') ?>">
 
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-</head>
+   <!-- Bootstrap core CSS -->
+   <script src="<?= URL::SCRIPTS('jquery.min') ?>"></script>
+
+    <!-- Custom styles for this template -->
+    </head>
 <body>
 
    <div class="container">

@@ -72,9 +72,29 @@
                                 '<li><a href="#">Parse</a></li>';
                               }
                               echo
-                                '<li><a href="#">Delete</a></li>
+                                '
+                                 <li><a href="#" data-toggle="modal" data-target=".pop-up-'.$bin['id'].'" >Delete</a></li>                          
                               </ul>
                             </div>
+
+                            <!--  Modal content for the delete image  -->
+                            <div class="modal fade pop-up-'.$bin['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                      <div class="modal-content">
+
+                                          <!--<div class="modal-header">
+                                             <h4 class="modal-title" id="myLargeModalLabel-1">......</h4>
+                                          </div>-->
+                                          <div class="modal-body">
+                                             <p style="color:black;">Are you sure that you want to permanently delete this file?</p>
+                                          </div>
+                                          <div class="modal-footer">
+                                              <a class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</a>
+                                              <a class="btn btn-primary" href=' . DIR . 'bins/delete/' . $bin['id'] . '" >Ok</a>          
+                                          </div>
+                                      </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal image -->
                         </td>
                      </tr>';
          }
