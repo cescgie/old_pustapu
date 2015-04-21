@@ -8,7 +8,7 @@
        <a type="button" href="<?= DIR?>folder/lists"  class="btn btn-default">Bin File</a>
      </div>
      <div class="btn-group" role="group">
-       <a type="button" href="#" class="btn btn-default">Analize</a>
+       <a type="button" href="<?= DIR?>ga/list"  class="btn btn-default">Analize</a>
      </div>
      <!--<div class="btn-group" role="group">
        <a type="button" href="#"  class="btn btn-default">Right</a>

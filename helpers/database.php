@@ -97,7 +97,7 @@ class Database extends PDO {
 		return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
 	}
 
-	public function delete_sel($table, $where) {
+	public function delete_selc($table, $where) {
 		return $this->exec("DELETE FROM $table WHERE $where");
 	}
 

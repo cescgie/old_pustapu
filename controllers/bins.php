@@ -99,7 +99,7 @@ class Bins extends Controller {
                    $file_name = $fbin['filedir'].$fbin['filetitle'];
                    //echo $file_name;
                    // Raising this value may increase performance
-                   /*$buffer_size = 4096; // read 4kb at a time
+                   $buffer_size = 4096; // read 4kb at a time
                    $out_file_name = str_replace('.gz', '', $file_name); 
                    // Open our files (in binary mode)
                    $file = gzopen($file_name, 'rb');
@@ -113,58 +113,28 @@ class Bins extends Controller {
                    // Files are done, close files
                    fclose($out_file);
                    gzclose($file);
-                   echo $out_file;*/
+                   echo $out_file;
                    //echo $id;
                    //update database
                    $datas['filetitle'] = str_replace('.gz', '', $fbin['filetitle']);
                    
                    //echo $id;
-                   //$this->_model->update_all($datas); 
+                   $this->_model->update_all($datas); 
                    //echo $datas['filetitle'].":".$datas['id'];
                    //erase gz
-                   /*$filename=$fbin['filedir'].$fbin['filetitle'];
-                   unlink($filename); */
+                   $filename=$fbin['filedir'].$fbin['filetitle'];
+                   unlink($filename); 
                } 
                //echo $datas['filetitle'];
                //echo $datas['filetitle'];
-               //$this->_model->update_all($datas);
-                   
-                          
+               //$this->_model->update_all($datas);                
            }else{
                Message::set("File not found!");
            }
 
         }
-        //header('Location: ' . $_SERVER['HTTP_REFERER']);
-       //$this->index();
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
    }
-
-   /*public function upload($fid) {
-       $id = (int)$fid;
-       echo $id;
-        if ($id > 0) 
-        {
-         if (!empty($_FILES)) {
-            $tempFile = $_FILES['uploaded']['tmp_name'];
-            $data['infolderid'] = $id;
-            $data['filetitle'] = $_FILES['uploaded']['name'];
-            $data['filedir'] = getcwd()."/uploads/";
-            $data['filesize'] = $_FILES["uploaded"]["size"];
-            $targetFile = $data['filedir']. $data['filetitle'];
-            move_uploaded_file($tempFile, $targetFile);
-            $this->_model->insert($data);
-            //header("Refresh:0; url='../../gallery'");
-            $data['title'] = "Upload";
-               Message::set("Upload succesfull");
-            } else{
-               Message::set("Upload failed. Please select a file to upload");
-            }
-         }
-         //$this->index();
-        //Message::show();
-        //header("Refresh:0; url='../../gallery'");
-         //header('Location: ' . $_SERVER['HTTP_REFERER']);
-    }*/
 
     public function uploads($fid) {
        $id = (int)$fid;
@@ -216,7 +186,37 @@ class Bins extends Controller {
            }
         }
         header('Location: ' . $_SERVER['HTTP_REFERER']);
-       //$this->index();
+   }
+
+   public function delete_db($id) {
+        $id = (int)$id;
+        //echo $id;
+        if ($id > 0) 
+        {
+          $file_name = $this->_model->file_bin($id);
+          //echo $filename;
+          //echo $id;
+          if ($file_name != null) {
+            //echo 
+            //echo "test";
+             //$file_name = $this->_model->file_bin($id);
+             //echo $file_name;
+             foreach ($file_name as $bin) {
+                  //echo $bin['filetitle'];
+                  //echo $bin['filedir'].$bin['filetitle'];
+                  $file_name=$bin['filedir'].$bin['filetitle'];
+                  //unlink($file_name);
+                  $file = $bin['filetitle'];
+                  //echo $file;
+                  $this->_model->delete_ga($file);
+                 
+                 Message::set("File ".$file." deleted");
+               }
+           }else{
+               Message::set("File not found!");
+           }
+        }
+        //header('Location: ' . $_SERVER['HTTP_REFERER']);
    }
 
    public function delete_all($id) {
@@ -396,7 +396,7 @@ class Bins extends Controller {
                         $datas['IspId'] =$tmpObject[36];
                         $datas['CountTypeId'] =$tmpObject[37];
                         $datas['ConnectionTypeId'] =$tmpObject[38];
-                        $datas['filename'] = $bin['filetitle'];
+                        $datas['filename'] = $bin['filetitle'].'.done';
                         //$datas['IpAddress'] = $tmpObject[16];
                         //echo $datas['AdServerFarmId'];
                         //echo $bin['filetitle']."_";

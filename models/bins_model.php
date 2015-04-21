@@ -37,6 +37,14 @@ class Bins_Model extends Model {
       else
          return null;
    }
+   public function select_ga($filename) {
+      #check
+      if (is_int($id))
+         return $this->_db->select("SELECT * FROM ga WHERE filename = $filename");
+      else
+         return null;
+   }
+
     public function file_gz($id) {
       #check
       if (is_int($id))
@@ -74,7 +82,15 @@ class Bins_Model extends Model {
    public function delete_sel($id) {
       #check
       if (is_int($id))
-         return $this->_db->delete('bin', 'infolderid ='.$id);
+         return $this->_db->delete_selc('bin', 'infolderid ='.$id);
+      else
+         return null;
+   }
+
+   public function delete_ga($file) {
+      #check
+      if($file)
+         return $this->_db->delete_selc('ga', 'filename ='.$file);
       else
          return null;
    }
