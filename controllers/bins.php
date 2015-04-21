@@ -51,12 +51,9 @@ class Bins extends Controller {
       $data['title'] = 'Convert';
       if ($id > 0){
          $data['bin'] = $this->_model->file_bin($id);
-         //echo $data['bin'];
          foreach ($data['bin'] as $fbin){
-          //echo $fbin['filetitle'];
-            //This input should be from somewhere else, hard-coded in this example
+               //This input should be from somewhere else, hard-coded in this example
                $file_name = $fbin['filedir'].$fbin['filetitle'];
-               //echo $file_name;
                // Raising this value may increase performance
                $buffer_size = 4096; // read 4kb at a time
                $out_file_name = str_replace('.gz', '', $file_name); 
@@ -68,9 +65,7 @@ class Bins extends Controller {
                // Read buffer-size bytes
                // Both fwrite and gzread and binary-safe
                  fwrite($out_file, gzread($file, $buffer_size));
-               }  
-               //echo $file."\n";
-               //echo $out_file."\n";
+               } 
                // Files are done, close files
                fclose($out_file);
                gzclose($file);
@@ -87,6 +82,61 @@ class Bins extends Controller {
          unlink($filename);
       }
     header('Location: ' . $_SERVER['HTTP_REFERER']);
+   }
+
+    public function convert_all($id) {
+        $id = (int)$id;
+        //echo $id;
+        if ($id > 0) 
+        {
+          
+          $data['bin'] = $this->_model->file_gz($id);
+          if ($data['bin'] != null) {
+            //echo $data['bin'];
+            echo $datas['id']=$id;
+             foreach ($data['bin'] as $fbin) {
+                  //This input should be from somewhere else, hard-coded in this example
+                   $file_name = $fbin['filedir'].$fbin['filetitle'];
+                   //echo $file_name;
+                   // Raising this value may increase performance
+                   /*$buffer_size = 4096; // read 4kb at a time
+                   $out_file_name = str_replace('.gz', '', $file_name); 
+                   // Open our files (in binary mode)
+                   $file = gzopen($file_name, 'rb');
+                   $out_file = fopen($out_file_name, 'wb'); 
+                   // Keep repeating until the end of the input file
+                   while(!gzeof($file)) {
+                   // Read buffer-size bytes
+                   // Both fwrite and gzread and binary-safe
+                     fwrite($out_file, gzread($file, $buffer_size));
+                   } 
+                   // Files are done, close files
+                   fclose($out_file);
+                   gzclose($file);
+                   echo $out_file;*/
+                   //echo $id;
+                   //update database
+                   $datas['filetitle'] = str_replace('.gz', '', $fbin['filetitle']);
+                   
+                   //echo $id;
+                   //$this->_model->update_all($datas); 
+                   //echo $datas['filetitle'].":".$datas['id'];
+                   //erase gz
+                   /*$filename=$fbin['filedir'].$fbin['filetitle'];
+                   unlink($filename); */
+               } 
+               //echo $datas['filetitle'];
+               //echo $datas['filetitle'];
+               //$this->_model->update_all($datas);
+                   
+                          
+           }else{
+               Message::set("File not found!");
+           }
+
+        }
+        //header('Location: ' . $_SERVER['HTTP_REFERER']);
+       //$this->index();
    }
 
    /*public function upload($fid) {
@@ -189,21 +239,19 @@ class Bins extends Controller {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
        //$this->index();
    }
-   public function ga_upload($fid) {
-      if(!isset($_POST['upfile'])){   
-         Message::set("Upload failed");
-        }else{ 
-            echo $fid;        
-            move_uploaded_file($_FILES["uploaded"]["tmp_name"],'uploads/'.$_FILES['uploaded']['name']);
-            //Message::set("Upload succesfull");
-            //$filename = $_FILES['uploaded']['name'];
-            
-            /*ini_set('max_execution_time', 68000); 
-            @set_time_limit(68000);
+   public function parse($fid) {
+        $id = (int)$fid;
+        //echo $id;
+        if ($id > 0) 
+        {
+          $data['bin'] = $this->_model->file_name($id);
+          if ($data['bin'] != null) {
+             ini_set('max_execution_time', 68000); 
+             @set_time_limit(68000);
 
-            $debugTimeStart = microtime(true);  
+             $debugTimeStart = microtime(true); 
 
-            $dataTypesSize = array(
+             $dataTypesSize = array(
                      'tinyint'=> array('code'=>'C', 'size'=>''),
                      'smallint'=> array( 'code'=>'n', 'size'=>''),
                      'int'=> array('code'=>'N', 'size'=>''),
@@ -216,87 +264,79 @@ class Bins extends Controller {
                      'char(1000)'=> array('code'=>'a1000', 'size'=>''),
                      'varchar(1000)'=> array('code'=>'a999', 'size'=>''),
                );
-            $codeGA = array(
-            array('name'=>'VersionId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>'0'),
-            array('name'=>'SequenceId', 'type'=>'unsignedint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'PlcNetworkId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'PlcSubNetworkId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'WebsiteId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'PlacementId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'PageId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'CmgnNetworkId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'CmgnSubNetworkId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'CampaignId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'MasterCampaignId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'BannerId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'BannerNumber', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'PaymentId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'StateId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'AreaCodeId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'IpAddress', 'type'=>'unsignedint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'UserId', 'type'=>'char(16)', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'OsId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'TagType', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'BrowserId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'BrowserLanguage', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'TLDId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'MediaTypeId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'PlcContentTypeId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'Reserved2', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'DateEntered', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'Hour', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'Minute', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'Second', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'AdServerIp', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'AdServerFarmId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'DMAId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'CountryId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'ZipCodeId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'CityId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'IspId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'CountTypeId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
-            array('name'=>'ConnectionTypeId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>'')
-                  );
-            $code = $codeGA;
-            //$code = $codeBPC;
-            
-            
-            //   sizes of datatypes   
-             
-            foreach($dataTypesSize AS $k=>$v) {
-               $dataTypesSize[$k]['size'] = strlen(pack($dataTypesSize[$k]['code'], '')); 
-               
-            };
-            $rowPointer = 0;
-            foreach($code AS $k=>$v) {
-               $code[$k]['size'] = $dataTypesSize[$code[$k]['type']]['size'];
-               $code[$k]['code'] =  $dataTypesSize[$code[$k]['type']]['code'];   
-               $code[$k]['accumulatedPointer'] = $rowPointer;
-               $rowPointer += $code[$k]['size'];         
-            };
-   
-            
-            //   size/length row
-            
-            $rowLength = count($code);
-            $rowSize = 0;
-            foreach($code AS $k=>$v) {
-               $rowSize += $code[$k]['size'];
-            };
-            
-            
-            
-              // errorcode
-            
-            $errorcode = array('-2', '-3', '-4', '-6', '-7', '-10', '-23', '-26', '-98');
-            $handlefolder = opendir ('uploads/');
-               while ($file = readdir ($handlefolder)) {    
-                  if (substr($file, -4) == '.bin') {
-                     echo 'uploads/'.$file."\n";
-                     $handle = fopen('uploads/'.$file, 'rb');
-                     while ($contents = fread($handle, $rowSize)) {
-                        $tmpObject = array();
-                        for ($i=0; $i<$rowLength; $i++) {
+               $codeGA = array(
+              array('name'=>'VersionId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>'0'),
+              array('name'=>'SequenceId', 'type'=>'unsignedint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'PlcNetworkId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'PlcSubNetworkId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'WebsiteId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'PlacementId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'PageId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'CmgnNetworkId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'CmgnSubNetworkId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'CampaignId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'MasterCampaignId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'BannerId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'BannerNumber', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'PaymentId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'StateId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'AreaCodeId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'IpAddress', 'type'=>'unsignedint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'UserId', 'type'=>'char(16)', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'OsId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'TagType', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'BrowserId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'BrowserLanguage', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'TLDId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'MediaTypeId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'PlcContentTypeId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'Reserved2', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'DateEntered', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'Hour', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'Minute', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'Second', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'AdServerIp', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'AdServerFarmId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'DMAId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'CountryId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'ZipCodeId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'CityId', 'type'=>'int', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'IspId', 'type'=>'smallint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'CountTypeId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>''),
+              array('name'=>'ConnectionTypeId', 'type'=>'tinyint', 'size'=>'', 'code'=>'', 'accumulatedPointer'=>'')
+                    );
+
+               $code = $codeGA;
+
+              //sizes of datatypes   
+              foreach($dataTypesSize AS $k=>$v) {
+                 $dataTypesSize[$k]['size'] = strlen(pack($dataTypesSize[$k]['code'], '')); 
+                 
+              };
+              $rowPointer = 0;
+              foreach($code AS $k=>$v) {
+                 $code[$k]['size'] = $dataTypesSize[$code[$k]['type']]['size'];
+                 $code[$k]['code'] =  $dataTypesSize[$code[$k]['type']]['code'];   
+                 $code[$k]['accumulatedPointer'] = $rowPointer;
+                 $rowPointer += $code[$k]['size'];         
+              };     
+
+               //   size/length row            
+              $rowLength = count($code);
+              $rowSize = 0;
+              foreach($code AS $k=>$v) {
+                 $rowSize += $code[$k]['size'];
+              };
+                    
+              // errorcode      
+              $errorcode = array('-2', '-3', '-4', '-6', '-7', '-10', '-23', '-26', '-98');
+              foreach ($data['bin'] as $bin) {
+                  if (substr($bin['filetitle'], -4) == '.bin') {
+                       $filename=$bin['filedir'].$bin['filetitle'];
+                       $handle = fopen($filename, 'rb');
+                       while ($contents = fread($handle, $rowSize)) {
+                          $tmpObject = array();
+                          for ($i=0; $i<$rowLength; $i++) {
                            
                            $data = unpack($code[$i]['code'], substr($contents, $code[$i]['accumulatedPointer'], $code[$i]['size']));         
                            $data = $data[1];
@@ -315,8 +355,7 @@ class Bins extends Controller {
                               if (!in_array($data, $errorcode))
                                  $data = substr(bcsub($data*-1, 4294967296), 1);       
                            };
-                           $tmpObject[$i] = $data;       
-                           
+                           $tmpObject[$i] = $data;                         
                         }; 
                         $datas['VersionId'] = $tmpObject[0];
                         $datas['SequenceId'] = $tmpObject[1];
@@ -357,24 +396,28 @@ class Bins extends Controller {
                         $datas['IspId'] =$tmpObject[36];
                         $datas['CountTypeId'] =$tmpObject[37];
                         $datas['ConnectionTypeId'] =$tmpObject[38];
-                        $datas['filename'] = $filename;
+                        $datas['filename'] = $bin['filetitle'];
                         //$datas['IpAddress'] = $tmpObject[16];
                         //echo $datas['AdServerFarmId'];
-                        //echo $tmpObject[16];
+                        //echo $bin['filetitle']."_";
                         $this->_model->ga_insert($datas);
                      };
-                  
-               @fclose($handle);
-               @chmod('uploads/'.$file, 0666);
-               @rename('uploads/'.$file, 'uploads/'.$file.'.done');
-            };
-         };
-         $debugTimeEnd = microtime(true); 
-         //echo "\n\n".'runtime: '.($debugTimeEnd-$debugTimeStart).' s';
-         //echo "\n";
-         */
-        }
-        //header("Refresh:0; url='/pustapu/bins'");
-    }
+                      //rename bin folder in path uploads/ 
+                      @fclose($handle);
+                      @chmod($filename, 0666);
+                      @rename($filename, $filename.'.done');
 
+                      //update database
+                      $datax['filetitle'] = str_replace('.bin', '.bin.done', $bin['filetitle']);
+                      $datax['id'] = $id;
+                      $this->_model->update($datax); 
+                  };
+                  $debugTimeEnd = microtime(true); 
+               }               
+             }else{
+                 Message::set("File not found!");
+             }
+        }
+     header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
 }

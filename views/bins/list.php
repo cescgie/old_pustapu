@@ -76,7 +76,7 @@
                               }
                               if (substr($bin['filetitle'], -4) == '.bin'){
                               echo 
-                                '<li><a href="#">Parse</a></li>';
+                                '<li><a href="'.DIR .'bins/parse/'.$bin['id'].'">Parse</a></li>';
                               }
                               echo
                                 '
@@ -111,7 +111,8 @@
                           <tr>
                             <td colspan="6">
                               <a href="#" data-toggle="modal" class="btn btn-warning btn-sm" data-target=".pop-up-d'.$folder['id'].'" >Delete all files</a></li>
-                               <!--  Modal content for the delete image  -->
+                              <!--<a href="#" data-toggle="modal" class="btn btn-primary btn-sm" data-target=".pop-up-e'.$folder['id'].'" >Convert all .gz files to .bin</a></li>-->
+                               <!--  Modal content for the delete file  -->
                               <div class="modal fade pop-up-d'.$folder['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
                                   <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -125,6 +126,24 @@
                                             <div class="modal-footer">
                                                 <a class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</a>
                                                 <a class="btn btn-primary" href="' . DIR . 'bins/delete_all/'.$folder['id'].'" >Ok</a>          
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                  </div><!-- /.modal-dialog -->
+                              </div><!-- /.modal image -->
+                               <!--  Modal content for the convert files  -->
+                              <div class="modal fade pop-up-e'.$folder['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
+                                  <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+
+                                            <!--<div class="modal-header">
+                                               <h4 class="modal-title" id="myLargeModalLabel-1">......</h4>
+                                            </div>-->
+                                            <div class="modal-body">
+                                               <p style="color:black;">Are you sure that you want to convert all files?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</a>
+                                                <a class="btn btn-primary" href="' . DIR . 'bins/convert_all/'.$folder['id'].'" >Ok</a>          
                                             </div>
                                         </div><!-- /.modal-content -->
                                   </div><!-- /.modal-dialog -->

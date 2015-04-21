@@ -37,6 +37,13 @@ class Bins_Model extends Model {
       else
          return null;
    }
+    public function file_gz($id) {
+      #check
+      if (is_int($id))
+         return $this->_db->select("SELECT filedir,filetitle,filesize FROM bin WHERE infolderid = $id");
+      else
+         return null;
+   }
 
    public function file_name($id){
       if (is_int($id))
@@ -78,6 +85,13 @@ class Bins_Model extends Model {
    public function update($data) {
      $this->_db->update('bin', $data, 'ID = '.$data['id']);
    }
+
+   public function update_all($data) {
+     $this->_db->update('bin', $data, 'infolderid = '.$data['id']);
+   }
    
+   public function ga_insert($datas) {
+     $this->_db->insert('ga', $datas);
+   }
 
 }
