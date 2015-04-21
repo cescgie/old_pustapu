@@ -31,7 +31,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
-CREATE TABLE `bin` (
+CREATE TABLE `ga_bin` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `filetitle` varchar(100) NOT NULL,
@@ -41,15 +41,15 @@ CREATE TABLE `bin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
-		CREATE TABLE `ga` (
+		CREATE TABLE `ga_table` (
 		  `id` bigint(20) NOT NULL auto_increment,
-		  `VersionId` tinyint(4) NOT NULL,	  
-		  `SequenceId` bigint(11) NOT NULL,		  
+		  `VersionId` tinyint(4) NOT NULL,
+		  `SequenceId` bigint(11) NOT NULL,
 		  `PlcNetworkId` mediumint(6) NOT NULL,
 		  `PlcSubNetworkId` smallint(4) NOT NULL,
 		  `WebsiteId` bigint(11) NOT NULL,
 		  `PlacementId` bigint(11) NOT NULL,
-		  `PageId` bigint(11) NOT NULL,		  
+		  `PageId` bigint(11) NOT NULL,
 		  `CmgnNetworkId` mediumint(6) NOT NULL,
 		  `CmgnSubNetworkId` smallint(4) NOT NULL,
 		  `CampaignId` bigint(11) NOT NULL,
@@ -71,8 +71,8 @@ CREATE TABLE `bin` (
 		  `Reserved2` smallint(4) NOT NULL,
 		  `DateEntered` int(11) NOT NULL,
 		  `Hour` tinyint(4) NOT NULL,
-		  `Minute` tinyint(4) NOT NULL,	
-		  `Second` tinyint(4) NOT NULL, 
+		  `Minute` tinyint(4) NOT NULL,
+		  `Second` tinyint(4) NOT NULL,
 		  `AdServerIp` tinyint(4) NOT NULL,
 		  `AdServerFarmId` tinyint(4) NOT NULL,
 		  `DMAId` tinyint(4) NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE `bin` (
 		  PRIMARY KEY  (`id`)
 		) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
 
-CREATE TABLE IF NOT EXISTS `folder` (
+CREATE TABLE IF NOT EXISTS `ga_folder` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edited_at` datetime NOT NULL,
@@ -95,3 +95,21 @@ CREATE TABLE IF NOT EXISTS `folder` (
   `depth` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `kv_table` (
+		  `id` bigint(20) NOT NULL auto_increment,
+		  `VersionId` tinyint(4) NOT NULL,
+		  `RecordSize` smallint(4) NOT NULL,		  
+		  `SequenceId` bigint(11) NOT NULL,		  
+		  `PlcNetworkId` mediumint(6) NOT NULL,
+		  `PlcSubNetworkId` smallint(4) NOT NULL,
+		  `WebsiteId` bigint(11) NOT NULL,
+		  `PlacementId` bigint(11) NOT NULL,		  
+		  `CmgnNetworkId` mediumint(6) NOT NULL,
+		  `CmgnSubNetworkId` smallint(4) NOT NULL,
+		  `CampaignId` bigint(11) NOT NULL,
+		  `ExtensionType` smallint(4) NOT NULL,
+		  `PhraseId` bigint(11) NOT NULL,
+		  `NoKeywordEntries` smallint(4) NOT NULL,		 
+		  PRIMARY KEY  (`id`)
+		) ENGINE=MyISAM  DEFAULT CHARSET=latin1

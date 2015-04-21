@@ -25,5 +25,4 @@ class Ga_Model extends Model {
    public function sum(){
       return $this->_db->select("SELECT count(*) as 'Summe' from ga");
    }
-   
 }
