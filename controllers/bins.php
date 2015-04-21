@@ -58,7 +58,7 @@ class Bins extends Controller {
                $file_name = $fbin['filedir'].$fbin['filetitle'];
                //echo $file_name;
                // Raising this value may increase performance
-               /*$buffer_size = 4096; // read 4kb at a time
+               $buffer_size = 4096; // read 4kb at a time
                $out_file_name = str_replace('.gz', '', $file_name); 
                // Open our files (in binary mode)
                $file = gzopen($file_name, 'rb');
@@ -74,20 +74,19 @@ class Bins extends Controller {
                // Files are done, close files
                fclose($out_file);
                gzclose($file);
-               echo $out_file;*/
+               echo $out_file;
                
          }
-         //$out_file_name = str_replace('.gz', '', $file_name);
-         $data['filetitle'] = str_replace('.gz', '', $fbin['filetitle']);
-         //echo $data['filetitle']."\n";
-         $data['id'] = $id;
-         //echo $data['$id']."\n";
-         //@chmod($file_name, 0666);
-         //@rename($file_name, 'data_ga/ga/20141119/00/'.$file.'.done');
-         $this->_model->update($data);        
-         //Message::set("Datei $files".$files['filetitle']." enfernt"); 
+         //update database
+         $datas['filetitle'] = str_replace('.gz', '', $fbin['filetitle']);
+         $datas['id'] = $id;
+         $this->_model->update($datas); 
+
+         //erase gz
+         $filename=$fbin['filedir'].$fbin['filetitle'];
+         unlink($filename);
       }
-    //header('Location: ' . $_SERVER['HTTP_REFERER']);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
    }
 
    /*public function upload($fid) {

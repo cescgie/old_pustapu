@@ -72,8 +72,12 @@ class Bins_Model extends Model {
          return null;
    }
 
+   /*public function update($data) {
+     $this->_db->update('bin' , $data, 'id = '.$data['id']);
+   }*/
    public function update($data) {
-     $this->_db->update('bin' ,$data, 'id = '.$data['id']);
+     $this->_db->update('bin', $data, 'ID = '.$data['id']);
    }
+   
 
 }
