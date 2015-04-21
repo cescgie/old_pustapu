@@ -30,7 +30,7 @@
                   <table border="1px" class="table">
                      <thead>
                         <tr>
-                          <th >Month</th>
+                          <th >Hour</th>
                         </tr>
                     </thead>
                     <tbody id="mediaList" class="hp-optionsTable">';

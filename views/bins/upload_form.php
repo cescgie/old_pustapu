@@ -21,13 +21,13 @@
                                     <h4 class="modal-title" id="myLargeModalLabel-1">...</h4>
                                   </div>
                                   <div class="modal-body">
-									<form id="ratting-form" data-async data-target="#rating-modal" action="' . DIR . 'bins/uploads/'.$data['fid'].'" class="dropzone"  >
-									           <input type="hidden" name="'.$data['fid'].'"> 
-									      </form>                                  
-								   </div>
-                                  <div class="modal-footer">
-								      <button class="btn btn-primary" data-dismiss="modal" onclick="myFunctionRel()">Close</button>
-								  </div>
+                									<form id="ratting-form" data-async data-target="#rating-modal" action="' . DIR . 'bins/uploads/'.$data['fid'].'" class="dropzone"  >
+                									           <input type="hidden" name="'.$data['fid'].'"> 
+                									      </form>                                  
+                								   </div>
+                                                  <div class="modal-footer">
+                								      <button class="btn btn-primary" data-dismiss="modal" onclick="myFunctionRel()">Close</button>
+                								  </div>
                                 </div><!-- /.modal-content -->
                               </div><!-- /.modal-dialog -->
                             </div><!-- /.modal image -->';

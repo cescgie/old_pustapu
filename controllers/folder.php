@@ -11,21 +11,19 @@ class Folder extends Controller {
 	{
 		//data for view
 		$data['title'] = 'Folder';
-      	//database
+		$data['header'] = 'Create Year';
+		$data['format'] = 'Example : 2015';
+		//database
       	$data['folder'] = $this->_model->all();
       	//view
       	$this->_view->render('header', $data);
-	  	$this->_view->render('folder/folder_form');
+	  	$this->_view->render('folder/folder_form',$data);
 	  	$this->_view->render('folder/list_depth0',$data); 
 	  	$this->_view->render('footer');
 		
 	}
 
 	public function createFolder(){
-		/*if(isset($_POST["folder_name"])){
-			Message::set($_POST["folder_name"]);
-		}
-		header('Location: ' . $_SERVER['HTTP_REFERER']);*/
 
 	   		if(isset($_POST["folder_name"])){
 	   			$data['name'] = $_POST["folder_name"];
@@ -42,6 +40,8 @@ class Folder extends Controller {
 
    public function depth1($id){
    		 $data['title'] = "Folder";
+   		 $data['header'] = 'Create Month';
+		 $data['format'] = 'Example : April';
    	 	 $id = (int)$id;
 	     if ($id > 0) 
 	     {
@@ -69,6 +69,8 @@ class Folder extends Controller {
    }
     public function depth2($id){
    		 $data['title'] = "Folder";
+   		 $data['header'] = 'Create Date';
+		 $data['format'] = 'Example : 20.04.2015';
    	 	 $id = (int)$id;
 	     if ($id > 0) 
 	     {
@@ -97,6 +99,8 @@ class Folder extends Controller {
    }
     public function depth3($id){
    		 $data['title'] = "Folder";
+   		 $data['header'] = 'Create Hour';
+		 $data['format'] = 'Example : 00';
    	 	 $id = (int)$id;
 	     if ($id > 0) 
 	     {
@@ -223,7 +227,6 @@ class Folder extends Controller {
 	     }
 	  header("Location: ".DIR."folder");
       //header('Location: ' . $_SERVER['HTTP_REFERER']);
-      //$this->index();
    }
 }
 ?>

@@ -23,10 +23,12 @@
                       <!-- Default panel contents -->
                        <div class="panel-heading">GA (Impression) </div>';
                         foreach ($data['sum'] as $sum){
-                          echo '<p>Summe all of data : '.$sum['Summe'].'</p>';
+                          echo '<p>Summe of all Data : '.$sum['Summe'].'</p>';
                         }
                         //foreach ($data['ip'] as $ip){
-                          echo '<p>Summe all Ip Address : '.$data['ip'].'</p>';
+                          echo 
+                          '<p>Summe of all IpAddress : '.$data['ip'].'</p>
+                          <p>Summe of all Users : '.$data['user'].'</p>';
                 echo
                       '</div> <!-- panel-heading -->
                 </div> <!-- panel panel-default -->';

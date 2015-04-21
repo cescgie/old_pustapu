@@ -8,14 +8,14 @@
 
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h2 style="color:black;">New Folder</h2>
+                <h2 style="color:black;"><?= $data['header']?></h2>
               </div>
               <div class="modal-body">
                 <form  id="myForm" class="form-horizontal well" data-async data-target="#rating-modal" action="<?= DIR ?>folder/createFolder" method="POST">
                   <fieldset>
                     <div class="modal-body">
                       <ul class="nav nav-list">
-                        <li class="nav-header" style="color:black;">Folder Name with depth: <?= $data['depth']?></li>
+                        <li class="nav-header" style="color:black;"><?= $data['format']?></li>
                         <li><input id="folder_name" type="text" name="folder_name"></li>
                         <input type="hidden" name="depth" value="<?= $data['depth']?>">
                         <input type="hidden" name="infolder" value="<?= $data['fid']?>">

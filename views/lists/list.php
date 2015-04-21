@@ -16,7 +16,7 @@
    </div>
    <?php
       if (!sizeof($data['lists'])) {
-         echo '<div class="alert alert-info">Derzeit gibt es keine Liste.</div>';
+         echo '<div class="alert alert-info">No file</div>';
       }
       else {
       echo '
