@@ -1,5 +1,5 @@
-<a href="<?= DIR?>folder/lists" type="button"  class="btn btn-primary">File Konfiguration</a>
-
+<a href="<?= DIR?>folder/lists" type="button"  class="btn btn-primary">File Konfiguration</a><br><br>
+<!--<a href="<?= DIR?>ga/sort" type="button"  class="btn btn-primary">Sort by</a>-->
 <div class="row list-group products">
    <?php echo Message::show(); ?>
     <br>

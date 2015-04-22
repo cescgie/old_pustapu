@@ -19,4 +19,10 @@ class Ga extends Controller {
       $this->_view->render('ga/list', $data);
       $this->_view->render('footer');
    }
+   public function sort(){
+      $data['title'] = 'Ga';
+      $this->_view->render('header', $data);
+      $this->_view->render('ga/list', $data);
+      $this->_view->render('footer');
+   }
 }
