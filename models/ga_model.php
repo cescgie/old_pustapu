@@ -14,7 +14,8 @@ class Ga_Model extends Model {
       return $this->_db->select('SELECT * FROM ga_table ORDER BY id DESC LIMIT 0, 20');
    }
    public function count(){
-      return $this->_db->select("SELECT IpAddress,count(IpAddress) as Summe FROM ga_table GROUP BY IpAddress HAVING count(*) >100 ORDER BY count(*) DESC");
+      return $this->_db->select("SELECT IpAddress,count(IpAddress) as Summe FROM ga_table GROUP BY IpAddress HAVING count(*) >100 ORDER BY count(*) DESC LIMIT 0,20");
+      //return $this->_db->select("SELECT IpAddress,count(IpAddress) as Summe FROM ga_table GROUP BY IpAddress HAVING count(*) >100 ORDER BY count(*) DESC");
    }
    public function all_ip(){
       return $this->_db->select("SELECT IpAddress,count(IpAddress) as Summe FROM ga_table GROUP BY IpAddress HAVING count(*) >1 ORDER BY count(*) DESC");

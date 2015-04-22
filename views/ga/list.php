@@ -18,8 +18,8 @@
                         }
                         //foreach ($data['ip'] as $ip){
                           echo 
-                          '<p>Summe of all IpAddress : '.$data['ip'].'</p>
-                          <p>Summe of all Users : '.$data['user'].'</p>';
+                          '<p>Summe of Unique IpAddress : '.$data['ip'].'</p>
+                          <p>Summe of Unique Users : '.$data['user'].'</p>';
                 echo
                       '</div> <!-- panel-heading -->
                 </div> <!-- panel panel-default -->';
@@ -34,7 +34,7 @@
                  echo 
                     '<div class="panel panel-default">
                       <!-- Default panel contents -->
-                       <div class="panel-heading">IpAddress with > 100 hits </div>
+                       <div class="panel-heading">Top 20 hits IpAddress</div>
                           <!-- Table -->
                           <table border="1px" class="table">
                              <thead>

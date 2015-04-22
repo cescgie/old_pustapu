@@ -19,6 +19,7 @@ class Bins_Model extends Model {
    }
 
    public function count(){
+      //return $this->_db->select("SELECT IpAddress,count(IpAddress) as Summe FROM ".Session::get('table')." GROUP BY id LIMIT 0,20 ORDER BY count(IpAddress) DESC");
       return $this->_db->select("SELECT IpAddress,count(IpAddress) as Summe FROM ".Session::get('table')." GROUP BY IpAddress HAVING count(*) >100 ORDER BY count(*) DESC");
 
    }

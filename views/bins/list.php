@@ -120,7 +120,7 @@
                      <tfoot>
                           <tr>
                             <td colspan="6">
-                              <a href="#" data-toggle="modal" class="btn btn-danger btn-sm" data-target=".pop-up-d'.$folder['id'].'" >Delete all file(s)</a></li>
+                              <div style="text-align:right;"><a href="#" data-toggle="modal" class="btn btn-danger btn-sm" data-target=".pop-up-d'.$folder['id'].'" >Delete all file(s)</a></div>
                                <!--  Modal content for the delete file  -->
                               <div class="modal fade pop-up-d'.$folder['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
                                   <div class="modal-dialog modal-lg">
