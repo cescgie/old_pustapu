@@ -45,7 +45,7 @@ class Bins_Model extends Model {
          return null;
    }
 
-    public function file_gz($id) {
+    public function file_sel($id) {
       #check
       if (is_int($id))
          return $this->_db->select("SELECT id,filedir,filetitle,filesize FROM ".Session::get('bin')." WHERE infolderid = $id");
@@ -62,7 +62,7 @@ class Bins_Model extends Model {
 
    public function file_name2($id){
       if (is_int($id))
-         return $this->_db->select("SELECT filedir,filetitle,filesize FROM ".Session::get('bin')." WHERE infolderid = $id");
+         return $this->_db->select("SELECT id,filedir,filetitle,filesize FROM ".Session::get('bin')." WHERE infolderid = $id");
       else
          return null;
    }
