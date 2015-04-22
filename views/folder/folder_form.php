@@ -1,6 +1,6 @@
 <?php echo Message::show(); ?>
 <!-- Bootstrap trigger to open modal -->
-  <a href="#" data-toggle="modal" class="btn btn-primary" data-target=".pop-up-folder">New Folder</a>
+  <a href="#" data-toggle="modal" class="btn btn-primary" data-target=".pop-up-folder"><?= $data['button'] ?></a>
       <!--  Modal content for the image -->
       <div class="modal fade pop-up-folder" id="rating-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">

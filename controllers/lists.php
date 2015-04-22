@@ -11,7 +11,7 @@ class Lists extends Controller {
       $data['lists'] = $this->_model->all();
 
       $this->_view->render('header', $data);
-      $this->_view->render('lists/list', $data);
+      //$this->_view->render('lists/list', $data);
       $this->_view->render('footer');
    }
 

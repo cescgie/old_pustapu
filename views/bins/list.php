@@ -43,7 +43,7 @@
    
    <?php
       if (!sizeof($data['bin'])) {
-         echo '<div class="alert alert-info">No Bin-file avalaible.</div>';
+         echo '<div class="alert alert-info">No file avalaible.</div>';
       }
       else {
         //echo $folder['id'];

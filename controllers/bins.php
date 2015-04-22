@@ -80,6 +80,7 @@ class Bins extends Controller {
          //erase gz
          $filename=$fbin['filedir'].$fbin['filetitle'];
          unlink($filename);
+         Message::set('File '.$fbin['filetitle'].' converted');
       }
     header('Location: ' . $_SERVER['HTTP_REFERER']);
    }
@@ -411,6 +412,7 @@ class Bins extends Controller {
                       $datax['filetitle'] = str_replace('.bin', '.bin.done', $bin['filetitle']);
                       $datax['id'] = $id;
                       $this->_model->update($datax); 
+                      Message::set('File '.$bin['filetitle'].' has been parsed');
                   };
                   $debugTimeEnd = microtime(true); 
                }               

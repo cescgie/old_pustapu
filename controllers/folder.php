@@ -12,6 +12,7 @@ class Folder extends Controller {
 		//data for view
 		$data['title'] = 'Folder';
 		$data['header'] = 'Create Year';
+		$data['button'] = 'Create Year Folder';
 		$data['format'] = 'Example : 2015';
 		//database
       	$data['folder'] = $this->_model->all();
@@ -41,6 +42,7 @@ class Folder extends Controller {
    public function depth1($id){
    		 $data['title'] = "Folder";
    		 $data['header'] = 'Create Month';
+   		 $data['button'] = 'Create Month Folder';
 		 $data['format'] = 'Example : April';
    	 	 $id = (int)$id;
 	     if ($id > 0) 
@@ -70,6 +72,7 @@ class Folder extends Controller {
     public function depth2($id){
    		 $data['title'] = "Folder";
    		 $data['header'] = 'Create Date';
+   		 $data['button'] = 'Create Date Folder';
 		 $data['format'] = 'Example : 20.04.2015';
    	 	 $id = (int)$id;
 	     if ($id > 0) 
@@ -100,6 +103,7 @@ class Folder extends Controller {
     public function depth3($id){
    		 $data['title'] = "Folder";
    		 $data['header'] = 'Create Hour';
+   		 $data['button'] = 'Create Hour Folder';
 		 $data['format'] = 'Example : 00';
    	 	 $id = (int)$id;
 	     if ($id > 0) 

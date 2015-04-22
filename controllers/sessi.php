@@ -27,7 +27,7 @@ class Sessi extends Controller {
       //$_SESSION["bin"] = "ga_bin";
 
       //Message::set(Session::get('table').Session::get('folder').Session::get('bin'));
-      header('Location: ' . DIR);
+      header('Location: ' . DIR.$id.'/list');
 
    }
 

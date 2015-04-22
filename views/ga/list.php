@@ -1,18 +1,8 @@
-<div class="row list-group products">
+<a href="<?= DIR?>folder/lists" type="button"  class="btn btn-primary">File Konfiguration</a>
 
+<div class="row list-group products">
    <?php echo Message::show(); ?>
-   <div class="btn-group btn-group-justified" role="group" aria-label="...">
-     <div class="btn-group" role="group">
-       <a type="button" href="<?= DIR?>folder/lists"  class="btn btn-default">Bin File</a>
-     </div>
-     <div class="btn-group" role="group">
-       <a type="button" href="<?= DIR?>ga/list"  class="btn btn-default">Analize</a>
-     </div>
-     <!--<div class="btn-group" role="group">
-       <a type="button" href="#"  class="btn btn-default">Right</a>
-     </div>-->
-   </div>
-   <br><br>
+    <br>
           <?php
               if (!sizeof($data['sum'])) {
                  echo '<div class="alert alert-info">No Data.</div>';
