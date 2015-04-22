@@ -39,4 +39,3 @@
            </div><!-- /.modal-dialog -->
           </div><!-- /.modal image -->
         </div>
-          <hr>

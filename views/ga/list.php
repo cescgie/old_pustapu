@@ -1,6 +1,7 @@
-<a href="<?= DIR?>folder/lists" type="button"  class="btn btn-primary">File Konfiguration</a><br><br>
-<!--<a href="<?= DIR?>ga/sort" type="button"  class="btn btn-primary">Sort by</a>-->
+<a href="<?= DIR?>folder/lists" type="button"  class="btn btn-primary">File Konfiguration</a>
 <div class="row list-group products">
+  <hr>
+  <!--<a href="<?= DIR?>ga/sort" type="button"  class="btn btn-primary">Sort by</a>-->
    <?php echo Message::show(); ?>
     <br>
           <?php

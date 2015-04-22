@@ -93,6 +93,25 @@ class Database extends PDO {
 		$stmt->execute();
 	}
 
+	public function update_all($table, $data) {
+
+		ksort($data);
+
+		$fieldDetails = NULL;
+		foreach($data as $key => $value) {
+			$fieldDetails .= "$key = :$key,";
+		}
+		$fieldDetails = rtrim($fieldDetails, ',');
+
+		$stmt = $this->prepare("UPDATE $table SET $fieldDetails");
+
+		foreach($data as $key => $value) {
+			$stmt->bindValue(":$key", $value);
+		}
+
+		$stmt->execute();
+	}
+
 	public function delete($table, $where, $limit = 1) {
 		return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
 	}

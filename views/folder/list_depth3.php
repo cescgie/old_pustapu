@@ -1,6 +1,6 @@
 <div class="container">
 <div class="row list-group products">
-
+<hr>
    <?php echo Message::show(); ?>
   <?php
    echo '<ol class="breadcrumb">

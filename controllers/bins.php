@@ -89,16 +89,12 @@ class Bins extends Controller {
         $id = (int)$id;
         //echo $id;
         if ($id > 0) 
-        {
-          
+        {          
           $data['bin'] = $this->_model->file_gz($id);
           if ($data['bin'] != null) {
-            //echo $data['bin'];
-            echo $datas['id']=$id;
-             foreach ($data['bin'] as $fbin) {
+             foreach ($data['bin'] as &$fbin) {
                   //This input should be from somewhere else, hard-coded in this example
                    $file_name = $fbin['filedir'].$fbin['filetitle'];
-                   //echo $file_name;
                    // Raising this value may increase performance
                    $buffer_size = 4096; // read 4kb at a time
                    $out_file_name = str_replace('.gz', '', $file_name); 
@@ -114,25 +110,22 @@ class Bins extends Controller {
                    // Files are done, close files
                    fclose($out_file);
                    gzclose($file);
-                   echo $out_file;
-                   //echo $id;
+                   echo $out_file;                  
+
                    //update database
                    $datas['filetitle'] = str_replace('.gz', '', $fbin['filetitle']);
-                   
-                   //echo $id;
-                   $this->_model->update_all($datas); 
-                   //echo $datas['filetitle'].":".$datas['id'];
-                   //erase gz
-                   $filename=$fbin['filedir'].$fbin['filetitle'];
-                   unlink($filename); 
-               } 
-               //echo $datas['filetitle'];
-               //echo $datas['filetitle'];
-               //$this->_model->update_all($datas);                
+                   $datas['id']= $fbin['id'];
+                   $this->_model->update($datas); 
+                  
+                   //erase .gz from path upload\
+                   if (substr($fbin['filetitle'], -7) == '.bin.gz'){
+                     $filename=$fbin['filedir'].$fbin['filetitle'];
+                     unlink($filename);
+                   }
+                }             
            }else{
                Message::set("File not found!");
            }
-
         }
         header('Location: ' . $_SERVER['HTTP_REFERER']);
    }

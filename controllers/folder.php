@@ -73,7 +73,7 @@ class Folder extends Controller {
    		 $data['title'] = "Folder";
    		 $data['header'] = 'Create Date';
    		 $data['button'] = 'Create Date Folder';
-		 $data['format'] = 'Example : 20.04.2015';
+		 $data['format'] = 'Example : 31';
    	 	 $id = (int)$id;
 	     if ($id > 0) 
 	     {

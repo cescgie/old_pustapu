@@ -24,11 +24,8 @@ class Sessi extends Controller {
       Session::set('table', $id.'_table');
       Session::set('folder',$id.'_folder');
       Session::set('bin', $id.'_bin');
-      //$_SESSION["bin"] = "ga_bin";
 
-      //Message::set(Session::get('table').Session::get('folder').Session::get('bin'));
       header('Location: ' . DIR.$id.'/list');
-
    }
 
 }

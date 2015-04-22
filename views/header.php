@@ -46,26 +46,26 @@ session_start();
          </ul>-->
       </nav>
       <div class="btn-group btn-group-justified" role="group" aria-label="...">
-        <!--<div class="btn-group" role="group">
-          <a type="button" href="<?= DIR ?>sessi/set_session/cf"  class="btn btn-default">CF</a>
-        </div>-->
+        <div class="btn-group" role="group">
+          <a type="button" href="#"  class="btn btn-default">CF</a>
+        </div>
         <div class="btn-group" role="group">
           <a type="button" href="<?= DIR ?>sessi/set_session/ga" class="btn btn-default">GA</a>
         </div>
-        <!--<div class="btn-group" role="group">
-          <a type="button" href="<?= DIR ?>sessi/set_session/gl"  class="btn btn-default">GL</a>
-        </div>-->
-        <!-- <div class="btn-group" role="group">
-          <a type="button" href="<?= DIR ?>sessi/set_session/ir"  class="btn btn-default">IR</a>
-        </div>-->
-        <!--<div class="btn-group" role="group">
-          <a type="button" href="<?= DIR ?>sessi/set_session/kv"  class="btn btn-default">KV</a>
-        </div>-->
-        <!--<div class="btn-group" role="group">
-          <a type="button" href="<?= DIR ?>sessi/set_session/kw"  class="btn btn-default">KW</a>
-        </div>-->
-       <!-- <div class="btn-group" role="group">
-          <a type="button" href="<?= DIR ?>sessi/set_session/tc"  class="btn btn-default">TC</a>
-        </div>-->
+        <div class="btn-group" role="group">
+          <a type="button" href="#"  class="btn btn-default">GL</a>
+        </div>
+        <div class="btn-group" role="group">
+          <a type="button" href="#"  class="btn btn-default">IR</a>
+        </div>
+        <div class="btn-group" role="group">
+          <a type="button" href="#"  class="btn btn-default">KV</a>
+        </div>
+        <div class="btn-group" role="group">
+          <a type="button" href="#"  class="btn btn-default">KW</a>
+        </div>
+        <div class="btn-group" role="group">
+          <a type="button" href="#"  class="btn btn-default">TC</a>
+        </div>
       </div>
       <br>

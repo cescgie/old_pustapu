@@ -33,4 +33,3 @@
                             </div><!-- /.modal image -->';
  ?>
  </div>
-<hr>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row list-group products">
-
+    <hr>
 
    <?php echo Message::show(); ?>
 
@@ -24,22 +24,6 @@
         </ol>
         ';
      ?>
-
-   <?php
-   /*echo '<br><br>
-   <div class="btn-group btn-group-justified" role="group" aria-label="...">
-     <div class="btn-group" role="group">
-       <a type="button" href="' .DIR.'bins/list"  class="btn btn-default">GA</a>
-     </div>
-     <div class="btn-group" role="group">
-       <a type="button" href="#" class="btn btn-default">Middle</a>
-     </div>
-     <div class="btn-group" role="group">
-       <a type="button" href="#"  class="btn btn-default">Right</a>
-     </div>
-   </div>';*/
-   ?>
-
    
    <?php
       if (!sizeof($data['bin'])) {
@@ -56,7 +40,7 @@
                      <thead>
                         <tr>
                           <th>Bin name</th>
-                          <th>Option</th>
+                          <th></th>
                         </tr>
                     </thead>
                     <tbody id="mediaList" class="hp-optionsTable">';
@@ -134,7 +118,7 @@
                           <tr>
                             <td colspan="6">
                               <a href="#" data-toggle="modal" class="btn btn-warning btn-sm" data-target=".pop-up-d'.$folder['id'].'" >Delete all files</a></li>
-                              <!--<a href="#" data-toggle="modal" class="btn btn-primary btn-sm" data-target=".pop-up-e'.$folder['id'].'" >Convert all .gz files to .bin</a></li>-->
+                              <a href="#" data-toggle="modal" class="btn btn-primary btn-sm" data-target=".pop-up-e'.$folder['id'].'" >Convert all .gz files to .bin</a></li>
                                <!--  Modal content for the delete file  -->
                               <div class="modal fade pop-up-d'.$folder['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
                                   <div class="modal-dialog modal-lg">
