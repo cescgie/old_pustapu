@@ -9,4 +9,5 @@ Die verwendete Technologie sind:<br>
 <li>CSS</li>
 <li>Bootstrap</li>
 <li>Javascript & JQuery</li>
+<li>Dropzone</li>
 </ul>
