@@ -34,7 +34,7 @@
                  echo 
                     '<div class="panel panel-default">
                       <!-- Default panel contents -->
-                       <div class="panel-heading">Top 20 hits IpAddress</div>
+                       <div class="panel-heading">Top 10 hits IpAddress</div>
                           <!-- Table -->
                           <table border="1px" class="table">
                              <thead>

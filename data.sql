@@ -82,7 +82,7 @@ CREATE TABLE `ga_bin` (
 		  `IspId` smallint(4) NOT NULL,
 		  `CountTypeId` tinyint(4) NOT NULL,
 		  `ConnectionTypeId` tinyint(4) NOT NULL,
-		  `filename` varchar(50) NOT NULL,
+		  `in_bin` bigint(20) NOT NULL,
 		  PRIMARY KEY  (`id`)
 		) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
 

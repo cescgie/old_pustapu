@@ -36,7 +36,7 @@
               <!-- Default panel contents -->
                <div class="panel-heading text-center">
                   <a href="#" data-toggle="modal" class="btn btn-primary btn-sm" data-target=".pop-up-e'.$folder['id'].'" >Convert available file(s) .gz  to .bin</a></li>
-                  <a href="#" data-toggle="modal" class="btn btn-warning btn-sm" data-target=".pop-up-g'.$folder['id'].'" >Parse available file(s) to database</a></li>
+                  <a href="#" data-toggle="modal" class="btn btn-warning btn-sm" data-target=".pop-up-g'.$folder['id'].'" >Parse available file(s) into database</a></li>
                </div>
                   <!-- Table -->
                   <table border="0px" class="table">
@@ -59,19 +59,20 @@
                               <ul class="dropdown-menu" role="menu">';
                               if (substr($bin['filetitle'], -7) == '.bin.gz'){
                               echo
-                                '<li><a href="'.DIR .'bins/tar_convert/'.$bin['id'].'">Convert file</a></li>';
+                                '<li><a href="'.DIR .'bins/tar_convert/'.$bin['id'].'">Convert file</a></li>
+                                 <li><a href="#" data-toggle="modal" data-target=".pop-up-'.$bin['id'].'" >Delete file</a></li>';
                               }
                               if (substr($bin['filetitle'], -4) == '.bin'){
                               echo 
-                                '<li><a href="#" data-toggle="modal" data-target=".pop-up-c'.$bin['id'].'" >Parse file</a></li>';
+                                '<li><a href="#" data-toggle="modal" data-target=".pop-up-c'.$bin['id'].'" >Parse file</a></li>
+                                 <li><a href="#" data-toggle="modal" data-target=".pop-up-'.$bin['id'].'" >Delete file</a></li>';
                               }
-                              /*if (substr($bin['filetitle'], -9) == '.bin.done'){
+                              if (substr($bin['filetitle'], -9) == '.bin.done'){
                               echo
-                                '<li><a href="#" data-toggle="modal" data-target=".pop-up-c'.$bin['id'].'" >Delete file and database</a></li>';
-                              }*/
+                                '<li><a href="#" data-toggle="modal" data-target=".pop-up-a'.$bin['id'].'" >Delete records in database</a></li>';
+                              }
                               echo
                                 '
-                                 <li><a href="#" data-toggle="modal" data-target=".pop-up-'.$bin['id'].'" >Delete</a></li>                          
                               </ul>
                             </div>
 
@@ -89,6 +90,25 @@
                                           <div class="modal-footer">
                                               <a class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</a>
                                               <a class="btn btn-danger" href="' . DIR . 'bins/delete/' . $bin['id'] . '" >Ok</a>          
+                                          </div>
+                                      </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal image -->
+
+                            <!--  Modal content for the delete file  -->
+                            <div class="modal fade pop-up-a'.$bin['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                      <div class="modal-content">
+
+                                          <!--<div class="modal-header">
+                                             <h4 class="modal-title" id="myLargeModalLabel-1">......</h4>
+                                          </div>-->
+                                          <div class="modal-body">
+                                             <p style="color:black;">Are you sure that you want to permanently delete this file?</p>
+                                          </div>
+                                          <div class="modal-footer">
+                                              <a class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</a>
+                                              <a class="btn btn-danger" href="' . DIR . 'bins/delete_db/' . $bin['id'] . '" >Ok</a>          
                                           </div>
                                       </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
@@ -120,7 +140,7 @@
                      <tfoot>
                           <tr>
                             <td colspan="6">
-                              <div style="text-align:right;"><a href="#" data-toggle="modal" class="btn btn-danger btn-sm" data-target=".pop-up-d'.$folder['id'].'" >Delete all file(s)</a></div>
+                              <!--<div style="text-align:right;"><a href="#" data-toggle="modal" class="btn btn-danger btn-sm" data-target=".pop-up-d'.$folder['id'].'" >Delete all file(s)</a></div>-->
                                <!--  Modal content for the delete file  -->
                               <div class="modal fade pop-up-d'.$folder['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
                                   <div class="modal-dialog modal-lg">
@@ -167,7 +187,7 @@
                                                <h4 class="modal-title" id="myLargeModalLabel-1">......</h4>
                                             </div>-->
                                             <div class="modal-body">
-                                               <p style="color:black;">Are you sure that you want to convert all files?</p>
+                                               <p style="color:black;">Are you sure that you want to parse all files into database?</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <a class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</a>

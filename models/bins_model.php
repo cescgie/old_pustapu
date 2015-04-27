@@ -41,7 +41,7 @@ class Bins_Model extends Model {
    public function select_ga($filename) {
       #check
       if (is_int($id))
-         return $this->_db->select("SELECT * FROM ".Session::get('table')." WHERE filename = $filename");
+         return $this->_db->select("SELECT * FROM ".Session::get('table')."WHERE filename = $filename");
       else
          return null;
    }
@@ -56,7 +56,7 @@ class Bins_Model extends Model {
 
    public function file_name($id){
       if (is_int($id))
-         return $this->_db->select("SELECT filedir,filetitle FROM ".Session::get('bin')." WHERE id = $id");
+         return $this->_db->select("SELECT id,filedir,filetitle FROM ".Session::get('bin')." WHERE id = $id");
       else
          return null;
    }
@@ -70,6 +70,12 @@ class Bins_Model extends Model {
    public function file_bin($id){
       if (is_int($id))
          return $this->_db->select("SELECT filetitle,filedir FROM ".Session::get('bin')." WHERE id = $id");
+      else
+         return null;
+   }
+   public function file_bins($filename){
+      if (is_int($id))
+         return $this->_db->select("SELECT id FROM ga_table WHERE filename = $filename");
       else
          return null;
    }
@@ -88,10 +94,10 @@ class Bins_Model extends Model {
          return null;
    }
 
-   public function delete_ga($file) {
+   public function delete_ga($id) {
       #check
-      if($file)
-         return $this->_db->delete_selc(Session::get('table'), 'filename ='.$file);
+      if($id)
+         return $this->_db->delete_selc(Session::get('table'), 'in_bin= '.$id);
       else
          return null;
    }

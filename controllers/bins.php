@@ -171,9 +171,12 @@ class Bins extends Controller {
                   //echo $bin['filetitle'];
                   //echo $bin['filedir'].$bin['filetitle'];
                   $filename=$bin['filedir'].$bin['filetitle'];
-                  unlink($filename);
+                  //delete from folder uploads
+                  unlink($filename);  
+                  //delete bin                
                   $this->_model->delete($id);
-                 
+                  //$this->_model->delete_ga($id);
+
                  Message::set("File ".$bin['filetitle']." deleted");
                }
            }else{
@@ -189,29 +192,23 @@ class Bins extends Controller {
         if ($id > 0) 
         {
           $file_name = $this->_model->file_bin($id);
-          //echo $filename;
-          //echo $id;
           if ($file_name != null) {
-            //echo 
-            //echo "test";
-             //$file_name = $this->_model->file_bin($id);
-             //echo $file_name;
-             foreach ($file_name as $bin) {
-                  //echo $bin['filetitle'];
-                  //echo $bin['filedir'].$bin['filetitle'];
-                  $file_name=$bin['filedir'].$bin['filetitle'];
-                  //unlink($file_name);
-                  $file = $bin['filetitle'];
-                  //echo $file;
-                  $this->_model->delete_ga($file);
-                 
-                 Message::set("File ".$file." deleted");
+            //delete from database
+            $this->_model->delete_ga($id);
+            foreach ($file_name as &$bin) {
+                  $filename=$bin['filedir'].$bin['filetitle'];
+                  //delete from folder uploads
+                  unlink($filename);  
+                  //delete bin                
+                  $this->_model->delete($id);                  
+
+                 Message::set("File(s) and records deleted");
                }
            }else{
-               Message::set("File not found!");
+               Message::set("File(s) not found!");
            }
         }
-        //header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
    }
 
    public function delete_all($id) {
@@ -391,7 +388,7 @@ class Bins extends Controller {
                         $datas['IspId'] =$tmpObject[36];
                         $datas['CountTypeId'] =$tmpObject[37];
                         $datas['ConnectionTypeId'] =$tmpObject[38];
-                        $datas['filename'] = $bin['filetitle'].'.done';
+                        $datas['in_bin'] = $bin['id'];
                         //$datas['IpAddress'] = $tmpObject[16];
                         //echo $datas['AdServerFarmId'];
                         //echo $bin['filetitle']."_";
@@ -576,7 +573,7 @@ class Bins extends Controller {
                         $datas['IspId'] =$tmpObject[36];
                         $datas['CountTypeId'] =$tmpObject[37];
                         $datas['ConnectionTypeId'] =$tmpObject[38];
-                        $datas['filename'] = $bin['filetitle'].'.done';
+                        $datas['in_bin'] = $bin['id'];
                         $this->_model->ga_insert($datas);
                      };
                       //rename bin folder in path uploads/ 
