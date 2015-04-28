@@ -8,7 +8,7 @@ class Lists extends Controller {
 
    public function index() {
       $data['title'] = 'Übersicht';
-      $data['lists'] = $this->_model->all();
+      //$data['lists'] = $this->_model->all();
 
       $this->_view->render('header', $data);
       //$this->_view->render('lists/list', $data);
