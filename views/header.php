@@ -47,7 +47,7 @@ session_start();
       </nav>
       <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
-          <a type="button" href="#"  class="btn btn-default">CF</a>
+          <a type="button" href="<?= DIR ?>sessi/set_session/cf"  class="btn btn-default">CF</a>
         </div>
         <div class="btn-group" role="group">
           <a type="button" href="<?= DIR ?>sessi/set_session/ga" class="btn btn-default">GA</a>

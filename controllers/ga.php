@@ -176,7 +176,7 @@ class Ga extends Controller {
                         //$datas['IpAddress'] = $tmpObject[16];
                         //echo $datas['AdServerFarmId'];
                         //echo $bin['filetitle']."_";
-                        $this->_model->ga_insert($datas);
+                        $this->_model->_insert($datas);
                      };
                       //rename bin folder in path uploads/ 
                       @fclose($handle);
@@ -354,7 +354,7 @@ class Ga extends Controller {
                         $datas['CountTypeId'] =$tmpObject[37];
                         $datas['ConnectionTypeId'] =$tmpObject[38];
                         $datas['in_bin'] = $bin['id'];
-                        $this->_model->ga_insert($datas);
+                        $this->_model->_insert($datas);
                      };
                       //rename bin folder in path uploads/ 
                       @fclose($handle);
