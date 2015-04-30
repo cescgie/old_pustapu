@@ -161,6 +161,73 @@ CREATE TABLE cf_folder (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 /* CF end */
 
+/* GL start */
+CREATE TABLE gl_table (
+			  id bigint(20) NOT NULL auto_increment,
+			  VersionId tinyint(4) NOT NULL,	  
+			  SequenceId bigint(11) NOT NULL,		  
+			  PlcNetworkId mediumint(6) NOT NULL,
+			  PlcSubNetworkId smallint(4) NOT NULL,
+			  WebsiteId bigint(11) NOT NULL,
+			  PlacementId bigint(11) NOT NULL,
+			  PageId smallint(4) NOT NULL,
+			  CmgnNetworkId smallint(4) NOT NULL,
+			  CmgnSubNetworkId smallint(4) NOT NULL,
+			  CampaignId bigint(11) NOT NULL,
+			  MasterCampaignId bigint(11) NOT NULL,
+			  BannerId mediumint(4) NOT NULL,
+			  BannerNumber smallint(4) NOT NULL,
+			  PaymentId tinyint(4) NOT NULL,
+			  StateId smallint(4) NOT NULL,
+			  AreaCodeId smallint(4) NOT NULL,
+			  IpAddress BINARY(16) NOT NULL,
+			  UserId char(16) NOT NULL,
+			  OsId tinyint(4) NOT NULL,
+			  TagType tinyint(4) NOT NULL,
+			  BrowserId tinyint(4) NOT NULL,
+			  BrowserLanguage tinyint(4) NOT NULL,
+			  TLDId smallint(4) NOT NULL,
+			  MediaTypeId tinyint(4) NOT NULL,
+			  PlcContentTypeId tinyint(4) NOT NULL,
+			  Reserved2 smallint(4) NOT NULL,
+			  DateEntered int(4) NOT NULL,	
+			  Hour tinyint(4) NOT NULL,
+			  Minute tinyint(4) NOT NULL,	
+			  Second tinyint(4) NOT NULL, 
+			  AdServerIp tinyint(4) NOT NULL,
+			  AdServerFarmId tinyint(4) NOT NULL,
+			  DMAId tinyint(4) NOT NULL,
+			  CountryId smallint(4) NOT NULL,
+			  ZipCodeId int(4) NOT NULL,
+			  CityId int(4) NOT NULL,
+			  IspId smallint(4) NOT NULL,
+			  CountTypeId tinyint(4) NOT NULL,
+			  ConnectionTypeId tinyint(4) NOT NULL,
+			  in_bin int(4) NOT NULL,
+			  PRIMARY KEY  (id)
+		) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+CREATE TABLE gl_bin (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  filetitle varchar(100) NOT NULL,
+  filedir varchar(100) NOT NULL,
+  filesize bigint(100) DEFAULT NULL,
+  infolderid int(11) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE gl_folder (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  edited_at datetime NOT NULL,
+  name varchar(100) NOT NULL,
+  infolder int(11) NOT NULL,
+  depth int(11) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+/* GL end */
+
 CREATE TABLE IF NOT EXISTS `kv_table` (
 		  `id` bigint(20) NOT NULL auto_increment,
 		  `VersionId` tinyint(4) NOT NULL,

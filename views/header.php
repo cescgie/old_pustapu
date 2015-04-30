@@ -53,7 +53,7 @@ session_start();
           <a type="button" href="<?= DIR ?>sessi/set_session/ga" class="btn btn-default">GA</a>
         </div>
         <div class="btn-group" role="group">
-          <a type="button" href="#"  class="btn btn-default">GL</a>
+          <a type="button" href="<?= DIR ?>sessi/set_session/gl"  class="btn btn-default">GL</a>
         </div>
         <div class="btn-group" role="group">
           <a type="button" href="#"  class="btn btn-default">IR</a>
