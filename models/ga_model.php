@@ -25,4 +25,23 @@ class Ga_Model extends Model {
    public function sum(){
       return $this->_db->select("SELECT count(*) as 'Summe' from ga_table");
    }
+   public function file_name($id){
+      if (is_int($id))
+         return $this->_db->select("SELECT id,filedir,filetitle FROM ".Session::get('bin')." WHERE id = $id");
+      else
+         return null;
+   }
+   public function file_name2($id){
+      if (is_int($id))
+         return $this->_db->select("SELECT id,filedir,filetitle,filesize FROM ".Session::get('bin')." WHERE infolderid = $id");
+      else
+         return null;
+   }
+    public function ga_insert($datas) {
+     $this->_db->insert(Session::get('table'), $datas);
+   }
+    public function update($data) {
+     $this->_db->update(Session::get('bin'), $data, 'ID = '.$data['id']);
+   }
+
 }

@@ -127,7 +127,7 @@
                                           </div>
                                           <div class="modal-footer">
                                               <a class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</a>
-                                              <a class="btn btn-primary" href="'.DIR .'bins/parse/'.$bin['id'].'" >Ok</a>          
+                                              <a class="btn btn-primary" href="'.DIR .''.Session::get('general').'/parse/'.$bin['id'].'" >Ok</a>          
                                           </div>
                                       </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
@@ -191,7 +191,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <a class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</a>
-                                                <a class="btn btn-primary" href="' . DIR . 'bins/parse_all/'.$folder['id'].'" >Ok</a>          
+                                                <a class="btn btn-primary" href="' . DIR .''.Session::get('general').'/parse_all/'.$folder['id'].'" >Ok</a>          
                                             </div>
                                         </div><!-- /.modal-content -->
                                   </div><!-- /.modal-dialog -->

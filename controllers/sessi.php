@@ -21,6 +21,7 @@ class Sessi extends Controller {
 
       // destroy the session
       //session_destroy(); 
+      Session::set('general', $id);
       Session::set('table', $id.'_table');
       Session::set('folder',$id.'_folder');
       Session::set('bin', $id.'_bin');
