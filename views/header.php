@@ -65,7 +65,7 @@ session_start();
           <a type="button" href="<?= DIR ?>sessi/set_session/kw"  class="btn btn-default">KW</a>
         </div>
         <div class="btn-group" role="group">
-          <a type="button" href="#"  class="btn btn-default">TC</a>
+          <a type="button" href="<?= DIR ?>sessi/set_session/tc"  class="btn btn-default">TC</a>
         </div>
       </div>
       <br>
