@@ -228,6 +228,54 @@ CREATE TABLE gl_folder (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 /* GL end */
 
+/* IR start */
+CREATE TABLE ir_table (
+			  id bigint(20) NOT NULL auto_increment,
+			  VersionId tinyint(4) NOT NULL,	  
+			  NetworkId smallint(4) NOT NULL,		  
+			  SubNetworkId tinyint(4) NOT NULL,
+			  PlacementId int(4) NOT NULL,
+			  CampaignId bigint(11) NOT NULL,
+			  IpAddress BINARY(16) NOT NULL,
+			  UserId char(16) NOT NULL,
+			  OsId tinyint(4) NOT NULL,
+			  BrowserId smallint(4) NOT NULL,
+			  TagType smallint(4) NOT NULL,
+			  RequestType tinyint(4) NOT NULL,
+			  DateEntered int(4) NOT NULL,	
+			  Hour tinyint(4) NOT NULL,
+			  Minute tinyint(4) NOT NULL,	
+			  Second tinyint(4) NOT NULL, 
+			  AdServerIp tinyint(4) NOT NULL,
+			  AdServerFarmId tinyint(4) NOT NULL,
+			  Url char(40) NOT NULL,
+			  Referer char(40) NOT NULL,
+			  in_bin int(4) NOT NULL,
+			  PRIMARY KEY  (id)
+		) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
+
+CREATE TABLE ir_bin (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  filetitle varchar(100) NOT NULL,
+  filedir varchar(100) NOT NULL,
+  filesize bigint(100) DEFAULT NULL,
+  infolderid int(11) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE ir_folder (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  edited_at datetime NOT NULL,
+  name varchar(100) NOT NULL,
+  infolder int(11) NOT NULL,
+  depth int(11) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+/* IR end */
+
 CREATE TABLE IF NOT EXISTS `kv_table` (
 		  `id` bigint(20) NOT NULL auto_increment,
 		  `VersionId` tinyint(4) NOT NULL,
