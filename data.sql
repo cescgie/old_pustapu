@@ -315,3 +315,45 @@ CREATE TABLE kv_folder (
   PRIMARY KEY (id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 /* KV end */
+
+/* KW start */
+CREATE TABLE kw_table (
+			  id bigint(20) NOT NULL auto_increment,
+			  VersionId tinyint(4) NOT NULL,
+			  SequenceId bigint(11) NOT NULL,		  
+			  PlcNetworkId smallint(6) NOT NULL,
+			  PlcSubNetworkId tinyint(4) NOT NULL,
+			  WebsiteId int(4) NOT NULL,
+			  PlacementId int(4) NOT NULL,
+			  PageId int(4) NOT NULL,
+			  CmgnNetworkId smallint(6) NOT NULL,
+			  CmgnSubNetworkId tinyint(4) NOT NULL,
+			  CampaignId int(4) NOT NULL,
+			  MasterCampaignId int(4) NOT NULL,
+			  ExtensionType tinyint(4) NOT NULL,
+			  TimeStamp int(4) NOT NULL,
+			  KeywordText char(40) NOT NULL,
+			  KeywordTextLength smallint(4) NOT NULL,
+			  in_bin int(4) NOT NULL,
+			  PRIMARY KEY  (id)
+		) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+CREATE TABLE kw_bin (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  filetitle varchar(100) NOT NULL,
+  filedir varchar(100) NOT NULL,
+  filesize bigint(100) DEFAULT NULL,
+  infolderid int(11) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE kw_folder (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  edited_at datetime NOT NULL,
+  name varchar(100) NOT NULL,
+  infolder int(11) NOT NULL,
+  depth int(11) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
