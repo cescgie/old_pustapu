@@ -273,23 +273,45 @@ CREATE TABLE ir_folder (
   depth int(11) NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
 /* IR end */
 
-CREATE TABLE IF NOT EXISTS `kv_table` (
-		  `id` bigint(20) NOT NULL auto_increment,
-		  `VersionId` tinyint(4) NOT NULL,
-		  `RecordSize` smallint(4) NOT NULL,		  
-		  `SequenceId` bigint(11) NOT NULL,		  
-		  `PlcNetworkId` mediumint(6) NOT NULL,
-		  `PlcSubNetworkId` smallint(4) NOT NULL,
-		  `WebsiteId` bigint(11) NOT NULL,
-		  `PlacementId` bigint(11) NOT NULL,		  
-		  `CmgnNetworkId` mediumint(6) NOT NULL,
-		  `CmgnSubNetworkId` smallint(4) NOT NULL,
-		  `CampaignId` bigint(11) NOT NULL,
-		  `ExtensionType` smallint(4) NOT NULL,
-		  `PhraseId` bigint(11) NOT NULL,
-		  `NoKeywordEntries` smallint(4) NOT NULL,		 
-		  PRIMARY KEY  (`id`)
-		) ENGINE=MyISAM  DEFAULT CHARSET=latin1
+/* KV start */
+CREATE TABLE kv_table (
+			  id bigint(20) NOT NULL auto_increment,
+			  VersionId tinyint(4) NOT NULL,
+			  RecordSize smallint(6) NOT NULL,	  
+			  SequenceId bigint(11) NOT NULL,		  
+			  PlcNetworkId smallint(6) NOT NULL,
+			  PlcSubNetworkId tinyint(4) NOT NULL,
+			  WebsiteId int(4) NOT NULL,
+			  PlacementId int(4) NOT NULL,
+			  CmgnNetworkId smallint(6) NOT NULL,
+			  CmgnSubNetworkId tinyint(4) NOT NULL,
+			  CampaignId int(4) NOT NULL,
+			  ExtensionType tinyint(4) NOT NULL,
+			  PhraseId int(4) NOT NULL,
+			  NoKeywordEntries smallint(4) NOT NULL,
+			  in_bin int(4) NOT NULL,
+			  PRIMARY KEY  (id)
+		) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
+
+CREATE TABLE kv_bin (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  filetitle varchar(100) NOT NULL,
+  filedir varchar(100) NOT NULL,
+  filesize bigint(100) DEFAULT NULL,
+  infolderid int(11) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE kv_folder (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  edited_at datetime NOT NULL,
+  name varchar(100) NOT NULL,
+  infolder int(11) NOT NULL,
+  depth int(11) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+/* KV end */

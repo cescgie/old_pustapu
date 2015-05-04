@@ -11,7 +11,7 @@
                 echo
                 '<div class="panel panel-default">
                       <!-- Default panel contents -->
-                       <div class="panel-heading">GA (Impression) </div>';
+                       <div class="panel-heading">CF</div>';
                         foreach ($data['sum'] as $sum){
                           echo '<p>Summe of all Data : '.$sum['Summe'].'</p>';
                         }

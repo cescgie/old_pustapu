@@ -59,7 +59,7 @@ session_start();
           <a type="button" href="<?= DIR ?>sessi/set_session/ir" class="btn btn-default">IR</a>
         </div>
         <div class="btn-group" role="group">
-          <a type="button" href="#"  class="btn btn-default">KV</a>
+          <a type="button" href="<?= DIR ?>sessi/set_session/kv"  class="btn btn-default">KV</a>
         </div>
         <div class="btn-group" role="group">
           <a type="button" href="#"  class="btn btn-default">KW</a>
