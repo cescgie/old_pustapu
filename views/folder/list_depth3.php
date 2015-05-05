@@ -12,7 +12,7 @@
         echo  '<li><a href="'.DIR .'folder/depth2/'.$fold1['id'].'">Month ('.$fold1['name'].')</a></li>';
       }
       foreach ($data['fname'] as $folder) {
-      echo '<li class="active">Day ('.$folder['name'].')</li>
+      echo '<li class="active">Date ('.$folder['name'].')</li>
         </ol>
         ';
     }  ?>

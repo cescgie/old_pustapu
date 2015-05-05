@@ -7,7 +7,7 @@ class Ga extends Controller {
    }
 
    public function index() {
-      $data['title'] = 'Ga';
+      $data['title'] = 'GA';
       $data['count'] = $this->_model->count();
       $data['sum'] = $this->_model->sum();
       $data['all_ip'] = $this->_model->all_ip();

@@ -10,7 +10,8 @@ class Folder extends Controller {
 	public function index()
 	{
 		//data for view
-		$data['title'] = 'Folder';
+		//strtoupper(Session::get('general'));
+		$data['title'] =  strtoupper(Session::get('general'))."_Folder";
 		$data['header'] = 'Create Year';
 		$data['button'] = 'Create Year Folder';
 		$data['format'] = 'Example : 2015';
@@ -40,7 +41,7 @@ class Folder extends Controller {
 	}
 
    public function depth1($id){
-   		 $data['title'] = "Folder";
+   		 $data['title'] = strtoupper(Session::get('general'))."_Folder";
    		 $data['header'] = 'Create Month';
    		 $data['button'] = 'Create Month Folder';
 		 $data['format'] = 'Example : April';
@@ -70,7 +71,7 @@ class Folder extends Controller {
 	     }
    }
     public function depth2($id){
-   		 $data['title'] = "Folder";
+   		 $data['title'] = strtoupper(Session::get('general'))."_Folder";
    		 $data['header'] = 'Create Date';
    		 $data['button'] = 'Create Date Folder';
 		 $data['format'] = 'Example : 31';
@@ -101,7 +102,7 @@ class Folder extends Controller {
 	     }
    }
     public function depth3($id){
-   		 $data['title'] = "Folder";
+   		 $data['title'] = strtoupper(Session::get('general'))."_Folder";
    		 $data['header'] = 'Create Hour';
    		 $data['button'] = 'Create Hour Folder';
 		 $data['format'] = 'Example : 00';
@@ -134,7 +135,7 @@ class Folder extends Controller {
    }
 
    public function depth4($id){
-   		 $data['title'] = "Folder";
+   		 $data['title'] = strtoupper(Session::get('general'))."_Folder";
    	 	 $id = (int)$id;
 	     if ($id > 0) 
 	     {

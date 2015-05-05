@@ -7,7 +7,7 @@ class Tc extends Controller {
    }
 
    public function index() {
-      $data['title'] = 'GL';
+      $data['title'] = 'TC';
       $data['sum'] = $this->_model->sum();
 
       $this->_view->render('header', $data);
