@@ -94,7 +94,7 @@ class Bins_Model extends Model {
          return null;
    }
 
-   public function delete_ga($id) {
+   public function delete_records($id) {
       #check
       if($id)
          return $this->_db->delete_selc(Session::get('table'), 'in_bin= '.$id);

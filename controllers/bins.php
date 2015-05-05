@@ -150,9 +150,7 @@ class Bins extends Controller {
                Message::set("Upload failed. Please select a file to upload");
             }
          }
-         //$this->index();
-        //Message::show();
-        //header("Refresh:0; url='../../gallery'");
+        header("Refresh:0; url='../../gallery'");
     }
 
     public function delete($id) {
@@ -161,21 +159,14 @@ class Bins extends Controller {
         if ($id > 0) 
         {
           $data['bin'] = $this->_model->single($id);
-          //echo $data['bin'];
           if ($data['bin'] != null) {
-            //echo 
-            //echo "test";
              $file_name = $this->_model->file_bin($id);
-             //echo $file_name;
              foreach ($file_name as &$bin) {
-                  //echo $bin['filetitle'];
-                  //echo $bin['filedir'].$bin['filetitle'];
                   $filename=$bin['filedir'].$bin['filetitle'];
                   //delete from folder uploads
                   unlink($filename);  
-                  //delete bin                
+                  //delete bin in database               
                   $this->_model->delete($id);
-                  //$this->_model->delete_ga($id);
 
                  Message::set("File ".$bin['filetitle']." deleted");
                }
@@ -191,21 +182,26 @@ class Bins extends Controller {
         //echo $id;
         if ($id > 0) 
         {
-          $file_name = $this->_model->file_bin($id);
+          $file_name = $this->_model->file_name($id);
           if ($file_name != null) {
-            //delete from database
-            $this->_model->delete_ga($id);
+            //delete records from database
+            $this->_model->delete_records($id);
             foreach ($file_name as &$bin) {
-                  $filename=$bin['filedir'].$bin['filetitle'];
-                  //delete from folder uploads
-                  unlink($filename);  
-                  //delete bin                
-                  $this->_model->delete($id);                  
+                  //update bin file in database
+                  $datax['filetitle'] = str_replace('.bin.done', '.bin', $bin['filetitle']);
+                  $datax['id'] = $bin['id'];
+                  $this->_model->update($datax);
+                  
+                  //update bin file in folder uploads
+                  $filename=$bin['filedir'].$bin['filetitle']; 
+                  chmod($filename, 0666);
+                  $newname = str_replace(".bin.done", ".bin", $filename);
+                  rename($filename, $newname); 
 
-                 Message::set("File(s) and records deleted");
+                 Message::set("Records in database deleted");
                }
            }else{
-               Message::set("File(s) not found!");
+               Message::set("Records not found!");
            }
         }
         header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -229,6 +225,5 @@ class Bins extends Controller {
            }
         }
         header('Location: ' . $_SERVER['HTTP_REFERER']);
-       //$this->index();
    }
 }

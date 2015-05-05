@@ -9,7 +9,7 @@ define('DOCROOT', dirname(__FILE__));
 
 // Credentials for the local server
 define('DB_TYPE','mysql');
-define('DB_HOST','localhost:3306');
+define('DB_HOST','localhost');
 define('DB_NAME','testDB');
 define('DB_USER','root');
 define('DB_PASS','password');
