@@ -6,7 +6,7 @@
 
    <?php
   
-   echo '<ol class="breadcrumb">
+   /*echo '<ol class="breadcrumb">
       <li><a href="'.DIR .'folder/">Folder</a></li>';
       foreach ($data['fname3'] as $fold2) {
         echo  '<li><a href="'.DIR .'folder/depth1/'.$fold2['id'].'">Year ('.$fold2['name'].')</a></li>';
@@ -22,8 +22,20 @@
       }
         echo'
         </ol>
+        ';*/
+        echo 
+        '<ol class="breadcrumb">
+          <li><a href="'.DIR .'folder/">Folder</a></li>';
+            foreach ($data['fname1'] as $folds) {
+              echo  '<li><a href="'.DIR .'folder/date/'.$folds['id'].'">Date ('.$folds['name'].')</a></li>';
+            }
+            foreach ($data['fname'] as $folder) {
+             echo 
+          '<li class="active">Time ('.$folder['name'].')</li>
+        </ol>
         ';
-     ?>
+      }
+      ?>
    
    <?php
       if (!sizeof($data['bin'])) {
@@ -78,7 +90,7 @@
 
                             <!--  Modal content for the delete file  -->
                             <div class="modal fade pop-up-'.$bin['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
+                                <div class="modal-dialog">
                                       <div class="modal-content">
 
                                           <!--<div class="modal-header">
@@ -97,7 +109,7 @@
 
                             <!--  Modal content for the delete file  -->
                             <div class="modal fade pop-up-a'.$bin['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
+                                <div class="modal-dialog">
                                       <div class="modal-content">
 
                                           <!--<div class="modal-header">
@@ -116,7 +128,7 @@
 
                             <!--  Modal content for the delete file and database  -->
                             <div class="modal fade pop-up-c'.$bin['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
+                                <div class="modal-dialog">
                                       <div class="modal-content">
 
                                           <!--<div class="modal-header">
@@ -143,7 +155,7 @@
                               <!--<div style="text-align:right;"><a href="#" data-toggle="modal" class="btn btn-danger btn-sm" data-target=".pop-up-d'.$folder['id'].'" >Delete all file(s)</a></div>-->
                                <!--  Modal content for the delete file  -->
                               <div class="modal fade pop-up-d'.$folder['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg">
+                                  <div class="modal-dialog">
                                         <div class="modal-content">
 
                                             <!--<div class="modal-header">
@@ -161,7 +173,7 @@
                               </div><!-- /.modal image -->
                                <!--  Modal content for the convert files  -->
                               <div class="modal fade pop-up-e'.$folder['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg">
+                                  <div class="modal-dialog">
                                         <div class="modal-content">
 
                                             <!--<div class="modal-header">
@@ -180,7 +192,7 @@
 
                               <!--  Modal content for the parse multiple files  -->
                               <div class="modal fade pop-up-g'.$folder['id'].'" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg">
+                                  <div class="modal-dialog">
                                         <div class="modal-content">
 
                                             <!--<div class="modal-header">

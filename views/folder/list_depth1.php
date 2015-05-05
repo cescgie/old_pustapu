@@ -8,7 +8,7 @@
       <li><a href="'.DIR .'folder/">Folder</a></li>';
        foreach ($data['fname'] as $folder) {
       echo 
-        '<li class="active">Year ('.$folder['name'].')</li>
+        '<li class="active">Date ('.$folder['name'].')</li>
         </ol>
         ';
     }  ?>
@@ -23,17 +23,17 @@
               <!-- Default panel contents -->
                <div class="panel-heading">Panel heading</div>
                   <!-- Table -->
-                  <table border="1px" class="table">
+                  <table border="0px" class="table">
                      <thead>
                         <tr>
-                          <th >Month</th>
+                          <th >Time</th>
                         </tr>
                     </thead>
                     <tbody id="mediaList" class="hp-optionsTable">';
          foreach ($data['folder'] as $folder) {
                   echo
                      '<tr>
-                        <td><a rel="group" href="' . DIR . 'folder/depth2/' . $folder['id'] . '"><span class="glyphicon glyphicon-folder-open">  '.$folder['name'].'</span></a></td>
+                        <td><a rel="group" href="' . DIR . 'folder/time/' . $folder['id'] . '"><span class="glyphicon glyphicon-folder-open">  '.$folder['name'].'</span></a></td>
                      </tr>';
          }
                   echo 

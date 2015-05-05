@@ -16,19 +16,19 @@
               <!-- Default panel contents -->
                <div class="panel-heading">Panel heading</div>
                   <!-- Table -->
-                  <table border="1px" class="table">
+                  <table border="0px" class="table">
                      <thead>
                         <tr>
-                          <th >Year</th>
+                          <th>Year</th>
                         </tr>
                     </thead>
                     <tbody id="mediaList" class="hp-optionsTable">';
          foreach ($data['folder'] as $folder) {
                   echo
                      '<tr>
-                        <td><a rel="group" href="' . DIR . 'folder/depth1/' . $folder['id'] . '"><span class="glyphicon glyphicon-folder-open">  '.$folder['name'].'</span></a></td>
-                     </tr>';
-         }
+                        <td><a rel="group" href="' . DIR . 'folder/date/' . $folder['id'] . '"><span class="glyphicon glyphicon-folder-open">  '.$folder['name'].'</span></a></td>
+                        ';
+                  }
                   echo 
                      '</tbody>
                 </table>

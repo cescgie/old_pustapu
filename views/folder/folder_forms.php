@@ -15,11 +15,9 @@
                     <div class="modal-body">
                       <ul class="nav nav-list">
                         <li class="nav-header" style="color:black;"><?= $data['format']?></li>
-                        <li><input type="text" id="datepicker" name="folder_name"></li>
-                         <script>
-                          $(function() {
-                            $( "#datepicker" ).datepicker({ dateFormat: 'yymmdd' });
-                          });
+                          <li><input type="text" id="roundTimeExample" name="folder_name"></li>
+                          <script type="text/javascript">
+                          $('#roundTimeExample').timepicker({ 'forceRoundTime': true, 'step': 60,'timeFormat': 'H' });
                           </script>
                         <input type="hidden" name="depth" value="<?= $data['depth']?>">
                         <input type="hidden" name="infolder" value="<?= $data['fid']?>">

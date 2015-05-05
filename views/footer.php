@@ -33,12 +33,12 @@
       </script>
       <script type="text/javascript">
       function toggleMediaSelection(parent) {
-	var childs = document.getElementById("mediaList").getElementsByTagName("input");
-	for (i = 0; i < childs.length; i++) {
-		if (!childs[i].disabled)
-			childs[i].checked = parent.checked;
-	}
-}
+      	var childs = document.getElementById("mediaList").getElementsByTagName("input");
+      	for (i = 0; i < childs.length; i++) {
+      		if (!childs[i].disabled)
+      			childs[i].checked = parent.checked;
+      	}
+      }
       </script>
 </body>
 </html>

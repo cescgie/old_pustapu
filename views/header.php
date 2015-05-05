@@ -21,7 +21,10 @@ session_start();
 
    <!-- Bootstrap core CSS -->
    <script src="<?= URL::SCRIPTS('jquery.min') ?>"></script>
-
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+   <link rel="stylesheet" type="text/css" href="<?= URL::STYLES('jquery.timepicker') ?>">
+   <script type="text/javascript" src="<?= URL::SCRIPTS('jquery.timepicker') ?>"></script>
     <!-- Custom styles for this template -->
     </head>
 <body>

@@ -10,11 +10,10 @@ class Folder extends Controller {
 	public function index()
 	{
 		//data for view
-		//strtoupper(Session::get('general'));
 		$data['title'] =  strtoupper(Session::get('general'))."_Folder";
-		$data['header'] = 'Create Year';
-		$data['button'] = 'Create Year Folder';
-		$data['format'] = 'Example : 2015';
+		$data['header'] = 'Create Date';
+		$data['button'] = 'Create Date Folder';
+		$data['format'] = 'Format : YYYYMMDD';
 		//database
       	$data['folder'] = $this->_model->all();
       	//view
@@ -39,7 +38,52 @@ class Folder extends Controller {
 	     header('Location: ' . $_SERVER['HTTP_REFERER']);
    
 	}
-
+	public function date($id){
+   		 $data['title'] = strtoupper(Session::get('general'))."_Folder";
+   		 $data['header'] = 'Create Time';
+   		 $data['button'] = 'Create Time Folder';
+		 $data['format'] = 'Format : HH';
+   	 	 $id = (int)$id;
+	     if ($id > 0) 
+	     {
+	     	 //echo $id;
+	     	 $fid = $id; 	 
+	     	 $data['depth'] = 1;
+	     	 $data['fid'] = $fid;
+	     	 $this->_view->render('header', $data);
+	     	 $this->_view->render('folder/folder_forms',$data);
+	     	 $data['fname'] = $this->_model->folder_name($fid);
+	     	 foreach ($data['fname'] as $folder) {
+	     	 	$fid1 = $folder['infolder'];   	 	
+	     	 }
+	     	 $data['folder'] = $this->_model->selectSingle($fid);	     	 
+	     	 $this->_view->render('folder/list_depth1',$data); 
+	  		 $this->_view->render('footer');
+	     }
+   }
+   public function time($id){
+   		 $data['title'] = strtoupper(Session::get('general'))."_Folder";
+   	 	 $id = (int)$id;
+	     if ($id > 0) 
+	     {
+	     	 $fid = $id;
+	     	 $data['fid']=$fid;
+	     	 $this->_view->render('header', $data);
+	     	 $this->_view->render('bins/upload_form', $data);	         
+	     	 $data['fname'] = $this->_model->folder_name($fid);
+	     	 foreach ($data['fname'] as $folder) {
+	     	 	$fid1 = $folder['infolder'];   	 	
+	     	 }
+	     	 $data['fname1'] = $this->_model->folder_name1($fid1);
+	     	 foreach ($data['fname1'] as $folder) {
+	     	 	$fid2 = $folder['infolder'];   	 	
+	     	 }
+	     	 $data['bin'] = $this->_model->selectBins($fid);
+	     	 $this->_view->render('bins/list',$data); 
+	  		 $this->_view->render('footer');
+	     }
+   }
+   /*
    public function depth1($id){
    		 $data['title'] = strtoupper(Session::get('general'))."_Folder";
    		 $data['header'] = 'Create Month';
@@ -165,6 +209,8 @@ class Folder extends Controller {
 	  		 $this->_view->render('footer');
 	     }
    }
+   */
+
    public function delete($id) {
 	     $id = (int)$id;
 	     if ($id > 0) 
@@ -180,6 +226,7 @@ class Folder extends Controller {
          }
 	     header('Location: ' . $_SERVER['HTTP_REFERER']);
    }
+
    /*
    public function edit($id){
    		if (Session::get('username')){
