@@ -25,12 +25,13 @@
               });
            }); 
         </script> 
-
+      <!-- Reload pop up after close button -->
       <script>
       function myFunctionRel() {
           location.reload();
       }
       </script>
+      <!-- Checkbox for multiple choice -->
       <script type="text/javascript">
       function toggleMediaSelection(parent) {
       	var childs = document.getElementById("mediaList").getElementsByTagName("input");

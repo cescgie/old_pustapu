@@ -19,7 +19,7 @@
                   <table border="0px" class="table">
                      <thead>
                         <tr>
-                          <th>Year</th>
+                          <th>Date</th>
                         </tr>
                     </thead>
                     <tbody id="mediaList" class="hp-optionsTable">';

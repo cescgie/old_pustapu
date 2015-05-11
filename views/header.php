@@ -10,8 +10,6 @@ session_start();
    <title><?= $data['title'] . ' - ' . SITETITLE ?></title>
    <link rel="stylesheet" href="<?= URL::STYLES('style') ?>">
    <!-- Latest compiled and minified CSS -->
-   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-   -->
    <link rel="stylesheet" href="<?= URL::STYLES('bootstrap.min') ?>">
 
    <!-- Optional theme -->
