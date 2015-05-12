@@ -55,6 +55,7 @@
                      <thead>
                         <tr>
                           <th>Bin name</th>
+                          <th>Bin size</th>
                           <th></th>
                         </tr>
                     </thead>
@@ -62,8 +63,18 @@
          foreach ($data['bin'] as $bin) {
                   echo
                      '<tr>
-                        <td>'.$bin['filetitle'].'</td>
-                        <td><!-- Single button -->
+                        <td>'.$bin['filetitle'].'</td>';
+                        /* File size */
+                        $precision=2;
+                        if($bin['filesize']>pow(1024,2)){
+                          echo '<td>' . round($bin['filesize']/pow(1024,2), $precision).' MB</td>';
+                        }elseif ($bin['filesize']>1024) {
+                          echo '<td>' . round($bin['filesize']/1024, $precision).' KB</td>';
+                        }else{
+                          echo '<td>'.$bin['filesize'].' B</td>';
+                        }
+                        echo
+                        '<td><!-- Single button -->
                             <div class="btn-group">
                               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 Action <span class="caret"></span>
