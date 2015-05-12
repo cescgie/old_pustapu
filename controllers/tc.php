@@ -107,6 +107,11 @@ class Tc extends Controller {
               $errorcode = array('-2', '-3', '-4', '-6', '-7', '-10', '-23', '-26', '-98');
               foreach ($data['bin'] as $bin) {
                   if (substr($bin['filetitle'], -4) == '.bin') {
+                       //update database
+                       $datax['filetitle'] = str_replace('.bin', '.bin.done', $bin['filetitle']);
+                       $datax['id'] = $id;
+                       $this->_model->update($datax); 
+
                        $filename=$bin['filedir'].$bin['filetitle'];
                        $handle = fopen($filename, 'rb');
                        while ($contents = fread($handle, $rowSize)) {
@@ -182,10 +187,6 @@ class Tc extends Controller {
                       @chmod($filename, 0666);
                       @rename($filename, $filename.'.done');
 
-                      //update database
-                      $datax['filetitle'] = str_replace('.bin', '.bin.done', $bin['filetitle']);
-                      $datax['id'] = $id;
-                      $this->_model->update($datax); 
                       Message::set('File '.$bin['filetitle'].' has been parsed');
                   };
                   $debugTimeEnd = microtime(true); 

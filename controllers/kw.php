@@ -106,6 +106,11 @@ class Kw extends Controller {
         
               foreach ($data['bin'] as $bin) {
                   if (substr($bin['filetitle'], -4) == '.bin') {
+                       //update database
+                       $datax['filetitle'] = str_replace('.bin', '.bin.done', $bin['filetitle']);
+                       $datax['id'] = $id;
+                       $this->_model->update($datax); 
+                       
                        $filename=$bin['filedir'].$bin['filetitle'];
                        $handle = fopen($filename, 'rb');
                       
@@ -155,10 +160,6 @@ class Kw extends Controller {
                       @chmod($filename, 0666);
                       @rename($filename, $filename.'.done');
 
-                      //update database
-                      $datax['filetitle'] = str_replace('.bin', '.bin.done', $bin['filetitle']);
-                      $datax['id'] = $id;
-                      $this->_model->update($datax); 
                       Message::set('File '.$bin['filetitle'].' has been parsed');
                   };
                   $debugTimeEnd = microtime(true); 

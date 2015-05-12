@@ -127,6 +127,12 @@ class Cf extends Controller {
               foreach ($data['bin'] as $bin) {
                   if (substr($bin['filetitle'], -4) == '.bin') {
                        $filename=$bin['filedir'].$bin['filetitle'];
+
+                       //update database
+                       $datax['filetitle'] = str_replace('.bin', '.bin.done', $bin['filetitle']);
+                       $datax['id'] = $id;
+                       $this->_model->update($datax); 
+                       
                        $handle = fopen($filename, 'rb');
                        while ($contents = fread($handle, $rowSize)) {
                           $tmpObject = array();
@@ -212,10 +218,6 @@ class Cf extends Controller {
                       @chmod($filename, 0666);
                       @rename($filename, $filename.'.done');
 
-                      //update database
-                      $datax['filetitle'] = str_replace('.bin', '.bin.done', $bin['filetitle']);
-                      $datax['id'] = $id;
-                      $this->_model->update($datax); 
                       Message::set('File '.$bin['filetitle'].' has been parsed');
                   };
                   $debugTimeEnd = microtime(true); 
