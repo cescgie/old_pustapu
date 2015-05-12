@@ -15,7 +15,7 @@
                               </a>
                             <!--  Modal content for the image -->
                             <div class="modal fade pop-up-s'.$data['fid'].'" id="rating-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
-                              <div class="modal-dialog">
+                              <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                   <div class="modal-header">
                                     <h4 class="modal-title" id="myLargeModalLabel-1">...</h4>
