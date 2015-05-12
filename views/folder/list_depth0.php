@@ -4,7 +4,7 @@
    <?php echo Message::show(); ?>
 
    <ol class="breadcrumb">
-    <li><a href="<?= DIR ?>folder/">Folder</a></li>
+    <li><a href="<?= DIR ?>folder/"><?php echo strtoupper(Session::get('general'))?> Folder</a></li>
   </ol>
    <?php
       if (!sizeof($data['folder'])) {

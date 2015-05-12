@@ -25,7 +25,7 @@
         ';*/
         echo 
         '<ol class="breadcrumb">
-          <li><a href="'.DIR .'folder/">Folder</a></li>';
+          <li><a href="'.DIR .'folder/">'.strtoupper(Session::get('general')).' Folder</a></li>';
             foreach ($data['fname1'] as $folds) {
               echo  '<li><a href="'.DIR .'folder/date/'.$folds['id'].'">Date ('.$folds['name'].')</a></li>';
             }

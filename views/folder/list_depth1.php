@@ -5,7 +5,7 @@
   <?php
  
    echo '<ol class="breadcrumb">
-      <li><a href="'.DIR .'folder/">Folder</a></li>';
+      <li><a href="'.DIR .'folder/">'. strtoupper(Session::get('general')).' Folder</a></li>';
        foreach ($data['fname'] as $folder) {
       echo 
         '<li class="active">Date ('.$folder['name'].')</li>
