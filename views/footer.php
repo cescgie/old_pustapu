@@ -41,5 +41,11 @@
       	}
       }
       </script>
+      <script src="<?= URL::SCRIPTS('spin.min') ?>"></script>
+      <script src="<?= URL::SCRIPTS('ladda.min') ?>"></script>
+      <script type="text/javascript">
+      // Bind normal buttons
+      Ladda.bind( '.load button', { timeout: 100000 } );
+      </script>
 </body>
 </html>

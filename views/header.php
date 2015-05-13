@@ -24,6 +24,8 @@ session_start();
    <link rel="stylesheet" type="text/css" href="<?= URL::STYLES('jquery.timepicker') ?>">
    <script type="text/javascript" src="<?= URL::SCRIPTS('jquery.timepicker') ?>"></script>
     <!-- Custom styles for this template -->
+   <link rel="stylesheet" href="<?= URL::STYLES('ladda-themeless.min') ?>" >
+
     </head>
 <body>
 

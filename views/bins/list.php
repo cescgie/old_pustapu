@@ -149,8 +149,12 @@
                                              <p style="color:black;">Are you sure that you want to parse this file into database?</p>
                                           </div>
                                           <div class="modal-footer">
-                                              <a class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</a>
-                                              <a class="btn btn-primary" href="'.DIR .Session::get('general').'/parse/'.$bin['id'].'" >Ok</a>          
+                                              <section class="load">
+                                                <a class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</a>
+                                                <a href="'.DIR .Session::get('general').'/parse/'.$bin['id'].'">
+                                                  <button class="btn btn-primary ladda-button" data-color="blue" data-style="contract">Parse</button>
+                                                </a>
+                                              </section>
                                           </div>
                                       </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
@@ -213,8 +217,12 @@
                                                <p style="color:black;">Are you sure that you want to parse all files into database?</p>
                                             </div>
                                             <div class="modal-footer">
+                                              <section class="load">
                                                 <a class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</a>
-                                                <a class="btn btn-primary" href="' . DIR .Session::get('general').'/parse_all/'.$folder['id'].'" >Ok</a>          
+                                                <a href="' . DIR .Session::get('general').'/parse_all/'.$folder['id'].'" >
+                                                  <button class="btn btn-primary ladda-button" data-color="blue" data-style="contract">Parse</button>
+                                                </a>
+                                              </section>      
                                             </div>
                                         </div><!-- /.modal-content -->
                                   </div><!-- /.modal-dialog -->
