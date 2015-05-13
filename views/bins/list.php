@@ -47,8 +47,8 @@
             '<div class="panel panel-default">
               <!-- Default panel contents -->
                <div class="panel-heading text-center">
-                  <a href="#" data-toggle="modal" class="btn btn-primary btn-sm" data-target=".pop-up-e'.$folder['id'].'" >Convert available file(s) .gz  to .bin</a></li>
-                  <a href="#" data-toggle="modal" class="btn btn-warning btn-sm" data-target=".pop-up-g'.$folder['id'].'" >Parse available file(s) into database</a></li>
+                  <a href="#" data-toggle="modal" class="btn btn-info btn-sm" data-target=".pop-up-e'.$folder['id'].'" >Convert available file(s) .gz  to .bin</a></li>
+                  <a href="#" data-toggle="modal" class="btn btn-primary btn-sm" data-target=".pop-up-g'.$folder['id'].'" >Parse available file(s) into database</a></li>
                </div>
                   <!-- Table -->
                   <table border="0px" class="table">
@@ -112,7 +112,7 @@
                                           </div>
                                           <div class="modal-footer">
                                               <a class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</a>
-                                              <a class="btn btn-danger" href="' . DIR . 'bins/delete/' . $bin['id'] . '" >Ok</a>          
+                                              <a class="btn btn-danger" href="' . DIR . 'bins/delete/' . $bin['id'] . '" >Delete</a>          
                                           </div>
                                       </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
@@ -127,13 +127,13 @@
                                              <h4 class="modal-title" id="myLargeModalLabel-1">......</h4>
                                           </div>-->
                                           <div class="modal-body">
-                                             <p style="color:black;">Are you sure that you want to permanently delete this file?</p>
+                                             <p style="color:black;">Are you sure that you want to permanently delete records from this file in database?</p>
                                           </div>
                                           <div class="modal-footer">
                                               <section class="load">
                                                 <a class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</a>
                                                 <a href="' . DIR . 'bins/delete_db/' . $bin['id'] . '"  >
-                                                  <button class="btn btn-danger ladda-button" data-color="red" data-style="zoom-in">Ok</button>
+                                                  <button class="btn btn-danger ladda-button" data-color="red" data-style="zoom-in">Delete</button>
                                                 </a>
                                               </section>          
                                           </div>
@@ -185,7 +185,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <a class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</a>
-                                                <a class="btn btn-danger" href="' . DIR . 'bins/delete_all/'.$folder['id'].'" >Ok</a>          
+                                                <a class="btn btn-danger" href="' . DIR . 'bins/delete_all/'.$folder['id'].'" >Delete</a>          
                                             </div>
                                         </div><!-- /.modal-content -->
                                   </div><!-- /.modal-dialog -->
@@ -205,7 +205,7 @@
                                                 <section class="load">
                                                 <a class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</a>
                                                 <a href="' . DIR . 'bins/convert_all/'.$folder['id'].'">
-                                                  <button class="btn btn-primary ladda-button" data-color="blue" data-style="zoom-in">Ok</button>
+                                                  <button class="btn btn-primary ladda-button" data-color="blue" data-style="zoom-in">Convert all</button>
                                                 </a>
                                               </section>        
                                             </div>
