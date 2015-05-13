@@ -7,26 +7,26 @@ session_start();
 <html>
 <head>
    <meta charset="utf-8">
+   <meta name="description" content="Pustapu">
+   <meta name="author" content="Yoggi Firmanda">
    <title><?= $data['title'] . ' - ' . SITETITLE ?></title>
+    <!-- Custom styles for this template -->
    <link rel="stylesheet" href="<?= URL::STYLES('style') ?>">
-   <!-- Latest compiled and minified CSS -->
+   <!-- Bootstrap -->
    <link rel="stylesheet" href="<?= URL::STYLES('bootstrap.min') ?>">
-
-   <!-- Optional theme -->
    <link rel="stylesheet" href="<?= URL::STYLES('bootstrap-theme.min') ?>">
    <link href="<?= URL::STYLES('font-awesome.min') ?>" rel="stylesheet" type="text/css">
+   <!-- Dropzone style -->
    <link rel="stylesheet" href="<?= URL::DROPZONECSS('dropzone') ?>">
-
-   <!-- Bootstrap core CSS -->
+   <!-- Jquery -->
    <script src="<?= URL::SCRIPTS('jquery.min') ?>"></script>
    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
    <link rel="stylesheet" type="text/css" href="<?= URL::STYLES('jquery.timepicker') ?>">
    <script type="text/javascript" src="<?= URL::SCRIPTS('jquery.timepicker') ?>"></script>
-    <!-- Custom styles for this template -->
+   <!-- Ladda style -->
    <link rel="stylesheet" href="<?= URL::STYLES('ladda-themeless.min') ?>" >
-
-    </head>
+</head>
 <body>
 
    <div class="container">

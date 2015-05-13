@@ -25,7 +25,7 @@
               });
            }); 
         </script> 
-      <!-- Reload pop up after close button -->
+      <!-- Reload pop up after close button by dropzone modal -->
       <script>
       function myFunctionRel() {
           location.reload();
@@ -41,6 +41,7 @@
       	}
       }
       </script>
+      <!-- Ladda style script -->
       <script src="<?= URL::SCRIPTS('spin.min') ?>"></script>
       <script src="<?= URL::SCRIPTS('ladda.min') ?>"></script>
       <script type="text/javascript">
