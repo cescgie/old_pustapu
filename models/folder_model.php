@@ -11,7 +11,7 @@ class Folder_Model extends Model {
    * @return array Liste aus Produkten mit id, timestamp, name, url, image und price
    */
    public function all() {
-      return $this->_db->select('SELECT * FROM '.Session::get("folder").' WHERE depth=0 ORDER BY name ASC LIMIT 0, 20');
+      return $this->_db->select('SELECT * FROM '.Session::get("folder").' WHERE depth=0 ORDER BY name DESC LIMIT 0, 20');
    }
 
    public function insert($data) {
