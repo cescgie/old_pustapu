@@ -57,7 +57,7 @@ class Folder_Model extends Model {
    }
    public function selectSingle($fid){
       if (is_int($fid))
-         return $this->_db->select("SELECT * FROM ".Session::get('folder')." WHERE infolder = $fid ORDER BY name ASC");
+         return $this->_db->select("SELECT * FROM ".Session::get('folder')." WHERE infolder = $fid ORDER BY name DESC");
       else
          return null;
    }
